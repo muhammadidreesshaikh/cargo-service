@@ -53,6 +53,7 @@ class AddUser extends Component {
                         <select class="form-control">
                           <option>Cargo Company</option>
                           <option>Customer Company</option>
+                          <option>Agent Company</option>
                           <option>Transport Company</option>
                           <option>Colloection Company</option>
                         </select>
@@ -75,6 +76,13 @@ class AddUser extends Component {
                       <div class="form-group">
                         <label>Contact</label>
                         <input type="number" class="form-control" placeholder="Contact"/>
+                      </div>
+                    </div>
+
+                    <div className="col-12 col-md-6 col-lg-6">
+                      <div class="form-group">
+                        <label>Commission Percentage</label>
+                        <input type="number" class="form-control" placeholder="Commission Percentage"/>
                       </div>
                     </div>
 

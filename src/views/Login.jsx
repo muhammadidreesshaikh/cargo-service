@@ -36,7 +36,7 @@ class Login extends Component {
                     </div>
 
                     <div className="col-12 col-md-12 col-lg-12">
-                        <div className="press text-center">
+                        <div className="text-center">
                             <button type="button" class="btn btn-fill btn-primary">Login</button>
                         </div>
                     </div>
