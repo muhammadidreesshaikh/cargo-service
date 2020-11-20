@@ -8,6 +8,10 @@ import AllTransport from "views/AllTransport.jsx";
 import AllCargo from "views/AllCargo.jsx";
 import AddSupervisor from "views/AddSupervisor.jsx";
 import AllSupervisor from "views/AllSupervisor.jsx";
+import RegisterTruck from "views/RegisterTruck.jsx";
+import RegisterTruckStaff from "views/RegisterTruckStaff.jsx";
+import AllTruckStaff from "views/AllTruckStaff.jsx";
+import BookingTruck from "views/BookingTruck.jsx";
 import AddUser from "views/AddUser.jsx";
 import Login from "views/Login.jsx";
 import Forget from "views/Forget.jsx";
@@ -77,7 +81,7 @@ const dashboardRoutes = [
     display: true,
     path: "/all-transport",
     name: "All Transport",
-    icon: "pe-7s-settings",
+    icon: "pe-7s-share",
     component: AllTransport,
     layout: "/admin"
   },
@@ -93,7 +97,7 @@ const dashboardRoutes = [
     display: true,
     path: "/add-supervisor",
     name: "Add Supervisor",
-    icon: "pe-7s-settings",
+    icon: "pe-7s-voicemail",
     component: AddSupervisor,
     layout: "/admin"
   },
@@ -103,6 +107,38 @@ const dashboardRoutes = [
     name: "All Supervisor",
     icon: "pe-7s-settings",
     component: AllSupervisor,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/register-truck",
+    name: "Register Truck",
+    icon: "pe-7s-paperclip",
+    component: RegisterTruck,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/register-truck-staff ",
+    name: "Register Truck Staff ",
+    icon: "pe-7s-ribbon",
+    component: RegisterTruckStaff ,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/all-truck-staff",
+    name: "All Truck Staff",
+    icon: "pe-7s-paper-plane",
+    component: AllTruckStaff,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/booking-truck",
+    name: "Booking Truck",
+    icon: "pe-7s-loop",
+    component: BookingTruck,
     layout: "/admin"
   },
   {
