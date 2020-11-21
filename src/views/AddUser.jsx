@@ -49,18 +49,12 @@ class AddUser extends Component {
 
                     <div className="col-12 col-md-6 col-lg-6">
                       <div class="form-group">
-                        <label>User Type</label>
-                        <select class="form-control">
-                          <option>Cargo Company</option>
-                          <option>Customer Company</option>
-                          <option>Agent Company</option>
-                          <option>Transport Company</option>
-                          <option>Colloection Company</option>
-                        </select>
+                        <label>Commission Percentage</label>
+                        <input type="number" class="form-control" placeholder="Commission Percentage"/>
                       </div>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-6">
+                    <div className="col-12 col-md-4 col-lg-4">
                       <div class="form-group">
                         <label>Cargo Company</label>
                         <select class="form-control">
@@ -72,17 +66,30 @@ class AddUser extends Component {
                       </div>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-6">
+                    <div className="col-12 col-md-4 col-lg-4">
                       <div class="form-group">
-                        <label>Contact</label>
-                        <input type="number" class="form-control" placeholder="Contact"/>
+                        <label>User Type</label>
+                        <select class="form-control">
+                          <option>Cargo Company</option>
+                          <option>Customer Company</option>
+                          <option>Agent Company</option>
+                          <option>Transport Company</option>
+                          <option>Colloection Company</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="col-12 col-md-4 col-lg-4">
+                      <div class="form-check main-check">
+                          <input type="checkbox" class="form-check-input"/>
+                          <label class="form-check-label">No Cargo Selected</label>
                       </div>
                     </div>
 
                     <div className="col-12 col-md-6 col-lg-6">
                       <div class="form-group">
-                        <label>Commission Percentage</label>
-                        <input type="number" class="form-control" placeholder="Commission Percentage"/>
+                        <label>Contact</label>
+                        <input type="number" class="form-control" placeholder="Contact"/>
                       </div>
                     </div>
 

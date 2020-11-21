@@ -26,6 +26,8 @@ class AllPickup extends Component {
                        <th>From</th>
                        <th>Pickup Contact</th>
                        <th>Dropoff Contact</th>
+                       <th>Assigned Center</th>
+                       <th>Assigned Staff</th>
                        <th>Actions</th>
                       </tr>
                     </thead>
@@ -37,6 +39,16 @@ class AllPickup extends Component {
                         <td>agzy</td>
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
+                        <td className="stop-point"> 
+                            <p>Center 1</p>
+                            <p>Center 5</p>
+                            <p>Center 3</p>
+                        </td>
+                        <td className="stop-point"> 
+                            <p>Staff 3</p>
+                            <p>Staff 2</p>
+                            <p>Staff 7</p>
+                        </td>
                         <td className="press">
                           <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
@@ -50,6 +62,16 @@ class AllPickup extends Component {
                         <td>romi</td>
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
+                        <td className="stop-point"> 
+                            <p>Center 3</p>
+                            <p>Center 2</p>
+                            <p>Center 5</p>
+                        </td>
+                        <td className="stop-point"> 
+                            <p>Center 6</p>
+                            <p>Center 3</p>
+                            <p>Center 1</p>
+                        </td>
                         <td className="press">
                           <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
@@ -63,6 +85,16 @@ class AllPickup extends Component {
                         <td>calie</td>
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
+                        <td className="stop-point"> 
+                            <p>Center 8</p>
+                            <p>Center 2</p>
+                            <p>Center 5</p>
+                        </td>
+                        <td className="stop-point"> 
+                            <p>Center 2</p>
+                            <p>Center 4</p>
+                            <p>Center 6</p>
+                        </td>
                         <td className="press">
                           <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
@@ -76,6 +108,16 @@ class AllPickup extends Component {
                         <td>horny</td>
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
+                        <td className="stop-point"> 
+                            <p>Center 3</p>
+                            <p>Center 2</p>
+                            <p>Center 6</p>
+                        </td>
+                        <td className="stop-point"> 
+                            <p>Center 8</p>
+                            <p>Center 5</p>
+                            <p>Center 7</p>
+                        </td>
                         <td className="press">
                           <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>

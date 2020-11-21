@@ -9,7 +9,7 @@ class AllCenter extends Component {
     return (
       <div className="content">
         <Grid fluid>
-          <Row>
+          <Row> 
             <Col md={12}>
               <Card
                 title="All Center"

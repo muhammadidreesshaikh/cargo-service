@@ -90,6 +90,25 @@ class PickupDetails extends Component {
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
+                                <label>Assign To</label>
+                                <select class="form-control">
+                                    <option>Center 1</option>
+                                    <option>Center 2</option>
+                                    <option>Center 3</option>
+                                    <option>Center 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" class="form-control" placeholder="Description"/>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
                                 <label>Cost Estimation</label>
                                 <input type="number" class="form-control" placeholder="Cost Estimation"/>
                             </div>
@@ -100,6 +119,7 @@ class PickupDetails extends Component {
                                 <label>Status</label>
                                 <select class="form-control">
                                     <option>Processing</option>
+                                    <option>Estimated</option>
                                     <option>Pickuped</option>
                                     <option>Delivered</option>
                                 </select>

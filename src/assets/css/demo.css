@@ -768,7 +768,39 @@
   margin-top: -7px;
   border-width: 7px 7px 7px 0;
 }
+ 
 
+
+/* custom style */
 button.btn,a.btn:first-child{
   margin-right: 8px;
+}
+
+.stop-points{
+  padding-top: 3%;
+}
+
+.main-check .form-check-label{
+  font-size: 15px;
+  margin-bottom: 0px;
+  text-transform: unset;
+  padding-left: 5px;
+}
+
+.stop-point p{
+  font-size: 14px;
+}
+
+
+
+
+/* menu desktop and mobile switching on responsive  */
+@media only screen and (max-width: 768px) {
+ 
+}
+
+@media only screen and (max-width: 600px) {
+  .main-check .form-check-label{
+    padding-top: 5%;
+  }
 }

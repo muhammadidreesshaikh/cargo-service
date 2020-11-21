@@ -3,7 +3,7 @@ import { Grid, Row, Col, Table } from "react-bootstrap";
 
 import Card from "components/Card/Card.jsx";
 
-class TableList extends Component {
+class AllAgents extends Component {
   render() {
     return (
       <div className="content">
@@ -11,7 +11,7 @@ class TableList extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="User Type List"
+                title="All Agents"
                 // category="Here is a subtitle for this table"
                 ctTableFullWidth
                 ctTableResponsive
@@ -93,4 +93,4 @@ class TableList extends Component {
   }
 }
 
-export default TableList;
+export default AllAgents;

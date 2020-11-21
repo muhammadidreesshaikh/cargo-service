@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
 
@@ -40,8 +40,7 @@ class RegisterTruck extends Component {
                                 <td>Lahore</td>
                                 <td>Approve</td>
                                 <td className="press">
-                                {/* <Link to="/admin/add-user" class="btn btn-fill btn-primary">Update</Link> */}
-                                <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
+                                <Link to="/admin/create-truck-booking" class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>
@@ -55,7 +54,7 @@ class RegisterTruck extends Component {
                                 <td>Multan</td>
                                 <td>Approve</td>
                                 <td className="press">
-                                    <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
+                                <Link to="/admin/create-truck-booking" class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>
@@ -69,7 +68,7 @@ class RegisterTruck extends Component {
                                 <td>Punjab</td>
                                 <td>Reject</td>
                                 <td className="press">
-                                    <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
+                                <Link to="/admin/create-truck-booking" class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>
@@ -83,7 +82,7 @@ class RegisterTruck extends Component {
                                 <td>Karachi</td>
                                 <td>Approve</td>
                                 <td className="press">
-                                    <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
+                                <Link to="/admin/create-truck-booking" class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>

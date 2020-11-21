@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
 
-class AddSupervisor extends Component {
+class AllStaffs extends Component {
   render() {
     return (
       <div className="content">
@@ -12,7 +12,7 @@ class AddSupervisor extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Add Supervisor"
+                title="All Staffs"
                 // category="Here is a subtitle for this table"
                 ctTableFullWidth
                 ctTableResponsive
@@ -36,7 +36,7 @@ class AddSupervisor extends Component {
                         <td>+92 333 7148980</td>
                         <td>Approve</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                          <Link to="/admin/add-staff" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                         </td>
                       </tr>
@@ -48,7 +48,7 @@ class AddSupervisor extends Component {
                         <td>+92 333 7148980</td>
                         <td>Approve</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                            <Link to="/admin/add-staff" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -60,7 +60,7 @@ class AddSupervisor extends Component {
                         <td>+92 333 7148980</td>
                         <td>Reject</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                            <Link to="/admin/add-staff" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -72,11 +72,11 @@ class AddSupervisor extends Component {
                         <td>+92 333 7148980</td>
                         <td>Approve</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                            <Link to="/admin/add-staff" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
-                    </tbody>
+                    </tbody> 
                   </Table>
                 }
               />
@@ -89,4 +89,4 @@ class AddSupervisor extends Component {
   }
 }
 
-export default AddSupervisor;
+export default AllStaffs;

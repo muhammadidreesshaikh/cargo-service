@@ -35,20 +35,22 @@ class RegisterTruck extends Component {
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label>Route</label>
-                                <select class="form-control">
-                                    <option>Islamabad</option>
-                                    <option>Lahore</option>
-                                    <option>Karachi</option>
-                                    <option>Multan</option>
-                                </select>
+                                <label>Location</label>
+                                <input type="location" class="form-control" placeholder="Location"/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label>Location</label>
-                                <input type="location" class="form-control" placeholder="Location"/>
+                                <label>Route From</label>
+                                <input type="route" class="form-control" placeholder="Route From"/>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Route To</label>
+                                <input type="route" class="form-control" placeholder="Route To"/>
                             </div>
                         </div>
 

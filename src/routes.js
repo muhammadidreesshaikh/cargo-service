@@ -1,17 +1,23 @@
 import Dashboard from "views/Dashboard.jsx";
 import UserProfile from "views/UserProfile.jsx";
-import TableList from "views/TableList.jsx";
+import UserTypeList from "views/UserTypeList.jsx";
 import AllPickup from "views/AllPickup.jsx";
 import PickupDetails from "views/PickupDetails.jsx";
 import AllCenter from "views/AllCenter.jsx";
 import AllTransport from "views/AllTransport.jsx";
 import AllCargo from "views/AllCargo.jsx";
+import AllAgents from "views/AllAgents.jsx";
 import AddSupervisor from "views/AddSupervisor.jsx";
 import AllSupervisor from "views/AllSupervisor.jsx";
 import RegisterTruck from "views/RegisterTruck.jsx";
 import RegisterTruckStaff from "views/RegisterTruckStaff.jsx";
 import AllTruckStaff from "views/AllTruckStaff.jsx";
 import BookingTruck from "views/BookingTruck.jsx";
+import CreateTrip from "views/CreateTrip.jsx";
+import CreateTruckBooking from "views/CreateTruckBooking.jsx";
+import ManageTrips from "views/ManageTrips.jsx";
+import AddStaff from "views/AddStaff.jsx";
+import AllStaffs from "views/AllStaffs.jsx";
 import AddUser from "views/AddUser.jsx";
 import Login from "views/Login.jsx";
 import Forget from "views/Forget.jsx";
@@ -39,10 +45,10 @@ const dashboardRoutes = [
   },
   {
     display: true,
-    path: "/table",
+    path: "/user-type-list",
     name: "User Type List",
     icon: "pe-7s-note2",
-    component: TableList,
+    component: UserTypeList,
     layout: "/admin"
   },
   {
@@ -95,6 +101,14 @@ const dashboardRoutes = [
   },
   {
     display: true,
+    path: "/all-agents",
+    name: "All Agents",
+    icon: "pe-7s-menu",
+    component: AllAgents,
+    layout: "/admin"
+  },
+  {
+    display: true,
     path: "/add-supervisor",
     name: "Add Supervisor",
     icon: "pe-7s-voicemail",
@@ -139,6 +153,46 @@ const dashboardRoutes = [
     name: "Booking Truck",
     icon: "pe-7s-loop",
     component: BookingTruck,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/create-trip",
+    name: "Create Trip",
+    icon: "pe-7s-portfolio",
+    component: CreateTrip,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/create-truck-booking",
+    name: "Create Truck Booking",
+    icon: "pe-7s-pin",
+    component: CreateTruckBooking,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/manage-trips",
+    name: "Manage Trips",
+    icon: "pe-7s-note",
+    component: ManageTrips,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/add-staff",
+    name: "Add Staff",
+    icon: "pe-7s-moon",
+    component: AddStaff,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/all-staffs",
+    name: "All Staffs",
+    icon: "pe-7s-map",
+    component: AllStaffs,
     layout: "/admin"
   },
   {

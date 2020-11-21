@@ -15,7 +15,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/faces/face-3.jpg"; 
 
-class AddSupervisor extends Component {
+class AddStaff extends Component {
   render() {
     return (
       <div className="content">
@@ -23,7 +23,7 @@ class AddSupervisor extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Add Supervisor"
+                title="Add Staff"
                 content={
                     <form>
                         <div className="col-12 col-md-6 col-lg-6">
@@ -76,4 +76,4 @@ class AddSupervisor extends Component {
   }
 }
 
-export default AddSupervisor;
+export default AddStaff;
