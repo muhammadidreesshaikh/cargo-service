@@ -40,7 +40,7 @@ class AllTruckStaff extends Component {
                                 <td>Approve</td>
                                 <td className="press">
                                 {/* <Link to="/admin/add-user" class="btn btn-fill btn-primary">Update</Link> */}
-                                <button type="button" class="btn btn-fill btn-primary pl-3">Update</button>
+                                <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>
@@ -52,7 +52,7 @@ class AllTruckStaff extends Component {
                                 <td>+92 333 7148980</td>
                                 <td>Approve</td>
                                 <td className="press">
-                                    <button type="button" class="btn btn-fill btn-primary pl-3">Update</button>
+                                    <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>
@@ -64,7 +64,7 @@ class AllTruckStaff extends Component {
                                 <td>+92 333 7148980</td>
                                 <td>Reject</td>
                                 <td className="press">
-                                    <button type="button" class="btn btn-fill btn-primary pl-3">Update</button>
+                                    <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>
@@ -76,7 +76,7 @@ class AllTruckStaff extends Component {
                                 <td>+92 333 7148980</td>
                                 <td>Approve</td>
                                 <td className="press">
-                                    <button type="button" class="btn btn-fill btn-primary pl-3">Update</button>
+                                    <button type="button" class="btn btn-fill btn-primary pl-3">Edit</button>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                                 </td>
                             </tr>

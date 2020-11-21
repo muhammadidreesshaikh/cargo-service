@@ -38,7 +38,7 @@ class AllPickup extends Component {
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
                         <td className="press">
-                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Update</Link>
+                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                         </td>
                       </tr>
@@ -51,7 +51,7 @@ class AllPickup extends Component {
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
                         <td className="press">
-                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Update</Link>
+                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -64,7 +64,7 @@ class AllPickup extends Component {
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
                         <td className="press">
-                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Update</Link>
+                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -77,7 +77,7 @@ class AllPickup extends Component {
                         <td>+92 333 7148980</td>
                         <td>+92 333 7148980</td>
                         <td className="press">
-                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Update</Link>
+                          <Link to="/admin/pickup-details" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>

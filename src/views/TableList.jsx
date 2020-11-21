@@ -37,7 +37,7 @@ class TableList extends Component {
                         <td>+92 333 7148980</td>
                         <td>Approve</td>
                         <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Update</button>
+                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
                           <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                         </td>
                       </tr>
@@ -50,7 +50,7 @@ class TableList extends Component {
                         <td>+92 333 7148980</td>
                         <td>Approve</td>
                         <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Update</button>
+                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -63,7 +63,7 @@ class TableList extends Component {
                         <td>+92 333 7148980</td>
                         <td>Reject</td>
                         <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Update</button>
+                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -76,7 +76,7 @@ class TableList extends Component {
                         <td>+92 333 7148980</td>
                         <td>Approve</td>
                         <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Update</button>
+                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
