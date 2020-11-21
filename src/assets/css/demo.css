@@ -791,6 +791,11 @@ button.btn,a.btn:first-child{
   font-size: 14px;
 }
 
+.form-check.main-check{
+  position: relative;
+  top: 33px;
+}
+
 
 
 
@@ -802,5 +807,9 @@ button.btn,a.btn:first-child{
 @media only screen and (max-width: 600px) {
   .main-check .form-check-label{
     padding-top: 5%;
+  }
+
+  .form-check.main-check{
+    top: -4px;
   }
 }

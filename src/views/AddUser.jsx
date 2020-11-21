@@ -81,8 +81,7 @@ class AddUser extends Component {
 
                     <div className="col-12 col-md-4 col-lg-4">
                       <div class="form-check main-check">
-                          <input type="checkbox" class="form-check-input"/>
-                          <label class="form-check-label">No Cargo Selected</label>
+                          <input type="checkbox" class="form-check-input" />  No Cargo Selected
                       </div>
                     </div>
 
