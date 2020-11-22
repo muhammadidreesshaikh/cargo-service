@@ -15,7 +15,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/faces/face-3.jpg"; 
 
-class AddStaff extends Component {
+class CreateService extends Component {
   render() {
     return ( 
       <div className="content">
@@ -23,38 +23,24 @@ class AddStaff extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Add Staff"
+                title="Create Service Type"
                 content={
                     <form>
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="name" class="form-control" placeholder="Name"/>
-                            </div>
-                        </div>
-
-                        <div className="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Email"/>
-                            </div>
-                        </div>
-
-                        <div className="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label>Contact</label>
-                                <input type="number" class="form-control" placeholder="Contact"/>
-                            </div>
-                        </div>
-
-                        <div className="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label>Status</label>
+                                <label>Service Type</label>
                                 <select class="form-control">
-                                    <option>Approve</option>
-                                    <option>Block</option>
-                                    <option>UnBlock</option>
+                                    <option>Standard</option>
+                                    <option>Express</option>
+                                    <option>Fast</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Service Price</label>
+                                <input type="number" class="form-control" placeholder="Service Price"/>
                             </div>
                         </div>
 
@@ -76,4 +62,4 @@ class AddStaff extends Component {
   }
 }
 
-export default AddStaff;
+export default CreateService;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
 
-class AddSupervisor extends Component {
+class AllService extends Component {
   render() {
     return (
       <div className="content">
@@ -12,7 +12,7 @@ class AddSupervisor extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Add Supervisor"
+                title="All Service Type"
                 // category="Here is a subtitle for this table"
                 ctTableFullWidth
                 ctTableResponsive
@@ -22,8 +22,8 @@ class AddSupervisor extends Component {
                       <tr>
                       <th>ID</th>
                        <th>Name</th>
-                       <th>Email</th>
-                       <th>Contact</th>
+                       {/* <th>Email</th>
+                       <th>Contact</th> */}
                        <th>Status</th>
                        <th>Actions</th>
                       </tr>
@@ -32,11 +32,11 @@ class AddSupervisor extends Component {
                       <tr>
                         <td>001</td>
                         <td>John</td>
-                        <td>john@email.com</td>
-                        <td>+92 333 7148980</td>
+                        {/* <td>john@email.com</td>
+                        <td>+92 333 7148980</td> */}
                         <td>Approve</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                         </td>
                       </tr>
@@ -44,11 +44,11 @@ class AddSupervisor extends Component {
                       <tr>
                         <td>002</td>
                         <td>Semth</td>
-                        <td>semth@email.com</td>
-                        <td>+92 333 7148980</td>
+                        {/* <td>semth@email.com</td>
+                        <td>+92 333 7148980</td> */}
                         <td>Approve</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -56,11 +56,11 @@ class AddSupervisor extends Component {
                       <tr>
                         <td>003</td>
                         <td>Rony</td>
-                        <td>Rony@email.com</td>
-                        <td>+92 333 7148980</td>
+                        {/* <td>Rony@email.com</td>
+                        <td>+92 333 7148980</td> */}
                         <td>Reject</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr> 
@@ -68,11 +68,11 @@ class AddSupervisor extends Component {
                       <tr>
                         <td>004</td>
                         <td>Jolandy</td>
-                        <td>jolandy@email.com</td>
-                        <td>+92 333 7148980</td>
+                        {/* <td>jolandy@email.com</td>
+                        <td>+92 333 7148980</td> */}
                         <td>Approve</td>
                         <td className="press">
-                          <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
                           <button type="button" class="btn btn-fill btn-danger">Delete</button>
                         </td>
                       </tr>
@@ -89,4 +89,4 @@ class AddSupervisor extends Component {
   }
 }
 
-export default AddSupervisor;
+export default AllService;

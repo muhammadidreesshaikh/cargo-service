@@ -18,6 +18,9 @@ import CreateTruckBooking from "views/CreateTruckBooking.jsx";
 import ManageTrips from "views/ManageTrips.jsx";
 import AddStaff from "views/AddStaff.jsx";
 import AllStaffs from "views/AllStaffs.jsx";
+import CreateService from "views/CreateService.jsx";
+import AllService from "views/AllService.jsx";
+
 import AddUser from "views/AddUser.jsx";
 import Login from "views/Login.jsx";
 import Forget from "views/Forget.jsx";
@@ -193,6 +196,22 @@ const dashboardRoutes = [
     name: "All Staffs",
     icon: "pe-7s-map",
     component: AllStaffs,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/all-service",
+    name: "All Service",
+    icon: "pe-7s-map",
+    component: AllService,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/create-service",
+    name: "Create Service",
+    icon: "pe-7s-map",
+    component: CreateService,
     layout: "/admin"
   },
   {
