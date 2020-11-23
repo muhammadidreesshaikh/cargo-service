@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
 
-class AllPickup extends Component {
+class AllPickupRequest extends Component {
   render() {
     return (
       <div className="content">
@@ -136,4 +136,4 @@ class AllPickup extends Component {
   }
 }
 
-export default AllPickup;
+export default AllPickupRequest;
