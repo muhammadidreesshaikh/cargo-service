@@ -3,8 +3,36 @@ import { Grid, Row, Col, Table } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
+import fire from '../core/Firebase.js';
 
 class AllService extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+    }
+  }
+
+  componentDidMount() {
+    this.getService();
+  }
+
+  getService = () => {
+    let tempLservice = [];
+    const serviceRef = fire.database().ref('services');
+
+    serviceRef.on('value', (snapshot) => {
+      const service = snapshot.val();
+
+      for (let id in service) {
+        tempLservice.push({ id, ...service[id] });
+      }
+      this.setState({ data: tempLservice});
+    });
+  };
+
   render() {
     return (
       <div className="content">
@@ -22,60 +50,31 @@ class AllService extends Component {
                       <tr>
                       <th>ID</th>
                        <th>Name</th>
-                       {/* <th>Email</th>
-                       <th>Contact</th> */}
+                       <th>Service Type</th>
+                       <th>Service Price</th>
                        <th>Status</th>
                        <th>Actions</th>
                       </tr>
                     </thead>
+
                     <tbody>
-                      <tr>
-                        <td>001</td>
-                        <td>John</td>
-                        {/* <td>john@email.com</td>
-                        <td>+92 333 7148980</td> */}
-                        <td>Approve</td>
-                        <td className="press">
-                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
-                          <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>002</td>
-                        <td>Semth</td>
-                        {/* <td>semth@email.com</td>
-                        <td>+92 333 7148980</td> */}
-                        <td>Approve</td>
-                        <td className="press">
-                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
-                          <button type="button" class="btn btn-fill btn-danger">Delete</button>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>003</td>
-                        <td>Rony</td>
-                        {/* <td>Rony@email.com</td>
-                        <td>+92 333 7148980</td> */}
-                        <td>Reject</td>
-                        <td className="press">
-                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
-                          <button type="button" class="btn btn-fill btn-danger">Delete</button>
-                        </td>
-                      </tr> 
-
-                      <tr>
-                        <td>004</td>
-                        <td>Jolandy</td>
-                        {/* <td>jolandy@email.com</td>
-                        <td>+92 333 7148980</td> */}
-                        <td>Approve</td>
-                        <td className="press">
-                          <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
-                          <button type="button" class="btn btn-fill btn-danger">Delete</button>
-                        </td>
-                      </tr>
+                      {
+                        this.state.data.map((item, key) => {
+                          return(
+                            <tr key={key}>
+                              <td>{item.id}</td>
+                              <td>{item.name}</td>
+                              <td>{item.service_type}</td>
+                              <td>{item.service_price}</td>
+                              <td>{item.status}</td>
+                              <td className="press">
+                                <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
+                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                              </td>
+                            </tr>
+                          )
+                        })
+                      }
                     </tbody>
                   </Table>
                 }

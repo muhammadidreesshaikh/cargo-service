@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
+import fire from '../core/Firebase.js';
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
@@ -16,6 +17,46 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import avatar from "assets/img/faces/face-3.jpg"; 
 
 class AddSupervisor extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: [],
+      email: [],
+      contact: [],
+      status: [],
+    }
+  }
+
+  createAddSupervisor = () => {
+    const addSupervisorRef = fire.database().ref('supervisors');
+  
+    const addSupervisor = {
+      name: this.state.name,
+      email: this.state.email,
+      contact: this.state.contact,
+      status: this.state.status,
+    };
+
+    addSupervisorRef.push(addSupervisor, function(error) {
+      if (error) {
+        alert("Data could not be saved." + error);
+      } else {
+        alert("Data saved successfully.");
+      }
+    });
+
+    this.props.history.push('/admin/add-supervisor');
+
+    console.log(addSupervisor);
+  };
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
+  }
+
   render() {
     return (
       <div className="content">
@@ -29,28 +70,28 @@ class AddSupervisor extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="name" class="form-control" placeholder="Name"/>
+                                <input name="name" type="name" class="form-control" placeholder="Name" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Email"/>
+                                <input name="email" type="email" class="form-control" placeholder="Email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Contact</label>
-                                <input type="number" class="form-control" placeholder="Contact"/>
+                                <input name="contact" type="number" class="form-control" placeholder="Contact" value={this.state.contact} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Status</label>
-                                <select class="form-control">
+                                <select name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
                                     <option>Approve</option>
                                     <option>Block</option>
                                     <option>UnBlock</option>
@@ -60,7 +101,7 @@ class AddSupervisor extends Component {
 
                         <div className="col-12 col-md-12 col-lg-12">
                             <div className="text-center">
-                                <button type="button" class="btn btn-fill btn-primary">Done</button>
+                                <button onClick={() => this.createAddSupervisor()} type="button" class="btn btn-fill btn-primary">Done</button>
                             </div>
                         </div>
                         

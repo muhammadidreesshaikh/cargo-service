@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
+import fire from '../core/Firebase.js';
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
@@ -16,6 +17,73 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import avatar from "assets/img/faces/face-3.jpg";
 
 class CreateTruckBooking extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            select_truck: [],
+            capacity: [],
+            date_from: [],
+            date_to: [],
+            route_from: [],
+            route_to: [],
+            status: [],
+
+            // checkbox
+            center_1: false,
+            center_2: false,
+            center_3: false,
+            center_4: false,
+            center_5: false,
+            center_6: false,
+            center_7: false,
+            center_8: false,
+        }
+    }
+
+    createCreateTruckBooking = () => {
+        const createTruckBookingRef = fire.database().ref('truck_bookings');
+        
+        const createTruckBooking = {
+            select_truck: this.state.select_truck,
+            capacity: this.state.capacity,
+            date_from: this.state.date_from,
+            date_to: this.state.date_to,
+            route_from: this.state.route_from,
+            route_to: this.state.route_to,
+            status: this.state.status,
+
+            // checkbox
+            center_1: this.state.center_1,
+            center_2: this.state.center_2,
+            center_3: this.state.center_3,
+            center_4: this.state.center_4,
+            center_5: this.state.center_5,
+            center_6: this.state.center_6,
+            center_7: this.state.center_7,
+            center_8: this.state.center_8,
+        };
+
+        createTruckBookingRef.push(createTruckBooking, function(error) {
+            if (error) {
+            alert("Data could not be saved." + error);
+            } else {
+            alert("Data saved successfully.");
+            }
+        });
+
+        this.props.history.push('/admin/add-user');
+
+        console.log(createTruckBooking);
+    };
+
+        handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
+        console.log(this.state);
+    }
+
+
   render() {
     return (
       <div className="content">
@@ -29,7 +97,7 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Select Truck</label>
-                                <select class="form-control">
+                                <select name=" select_truck" class="form-control" value={this.state.name} onChange={(event) => this.handleChange(event)} value={this.state.name} onChange={(event) => this.handleChange(event)}>
                                     <option>Truck KND-435</option>
                                     <option>Truck QSW-991</option>
                                     <option>Truck AWF-573</option>
@@ -41,7 +109,7 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Capacity</label>
-                                <input type="text" class="form-control" placeholder="Capacity"/>
+                                <input name="capacity" type="text" class="form-control" placeholder="Capacity" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
@@ -49,35 +117,35 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Date From</label>
-                                <input type="date" class="form-control" placeholder="Date From"/>
+                                <input name="date_from" type="date" class="form-control" placeholder="Date From" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Date To</label>
-                                <input type="date" class="form-control" placeholder="Date To"/>
+                                <input name="date_to" type="date" class="form-control" placeholder="Date To" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Route From</label>
-                                <input type="text" class="form-control" placeholder="Route From"/>
+                                <input name="route_from" type="text" class="form-control" placeholder="Route From" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Route To</label>
-                                <input type="text" class="form-control" placeholder="Route To"/>
+                                <input name="route_to" type="text" class="form-control" placeholder="Route To" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Status</label>
-                                <select class="form-control">
+                                <select  name="status" class="form-control" value={this.state.name} onChange={(event) => this.handleChange(event)}>
                                     <option>Approve</option>
                                     <option>Block</option>
                                     <option>UnBlock</option>
@@ -97,56 +165,56 @@ class CreateTruckBooking extends Component {
                                 <div className="main-check justify-content-center">
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_1" type="checkbox" class="form-check-input" />
                                             <label class="form-check-label">Center 1</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_2" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 2</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_3" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 3</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_4" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 4</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_5" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 5</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_6" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 6</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_7" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 7</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input"/>
+                                            <input name="center_8" type="checkbox" class="form-check-input"/>
                                             <label class="form-check-label">Center 8</label>
                                         </div>
                                     </div>
@@ -156,7 +224,7 @@ class CreateTruckBooking extends Component {
 
                         <div className="col-12 col-md-12 col-lg-12">
                             <div className="text-center">
-                                <button type="button" class="btn btn-fill btn-primary">Done</button>
+                                <button onClick={() => this.createCreateTruckBooking()} type="button" class="btn btn-fill btn-primary">Done</button>
                             </div>
                         </div>
 
