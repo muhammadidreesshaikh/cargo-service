@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cargo-service/static/css/main.3bdc77a6.chunk.css",
+    "main.js": "/cargo-service/static/js/main.c1d3f35f.chunk.js",
+    "main.js.map": "/cargo-service/static/js/main.c1d3f35f.chunk.js.map",
+    "runtime~main.js": "/cargo-service/static/js/runtime~main.02886c7b.js",
+    "runtime~main.js.map": "/cargo-service/static/js/runtime~main.02886c7b.js.map",
+    "static/css/2.6388f885.chunk.css": "/cargo-service/static/css/2.6388f885.chunk.css",
+    "static/js/2.f93fb03f.chunk.js": "/cargo-service/static/js/2.f93fb03f.chunk.js",
+    "static/js/2.f93fb03f.chunk.js.map": "/cargo-service/static/js/2.f93fb03f.chunk.js.map",
+    "index.html": "/cargo-service/index.html",
+    "precache-manifest.2adf459230cf829c45c0ce590e13227e.js": "/cargo-service/precache-manifest.2adf459230cf829c45c0ce590e13227e.js",
+    "service-worker.js": "/cargo-service/service-worker.js",
+    "static/css/2.6388f885.chunk.css.map": "/cargo-service/static/css/2.6388f885.chunk.css.map",
+    "static/css/main.3bdc77a6.chunk.css.map": "/cargo-service/static/css/main.3bdc77a6.chunk.css.map",
+    "static/media/pe-icon-7-stroke.css": "/cargo-service/static/media/Pe-icon-7-stroke.c45f7de0.svg",
+    "static/media/face-3.jpg": "/cargo-service/static/media/face-3.ce7a6b79.jpg",
+    "static/media/bootstrap.min.css": "/cargo-service/static/media/glyphicons-halflings-regular.fa277232.woff",
+    "static/media/reactlogo.png": "/cargo-service/static/media/reactlogo.9b864b36.png",
+    "static/media/sidebar-1.jpg": "/cargo-service/static/media/sidebar-1.6be21e8a.jpg",
+    "static/media/sidebar-2.jpg": "/cargo-service/static/media/sidebar-2.7a4ce7cc.jpg",
+    "static/media/sidebar-3.jpg": "/cargo-service/static/media/sidebar-3.34535b95.jpg",
+    "static/media/sidebar-4.jpg": "/cargo-service/static/media/sidebar-4.7bc259fd.jpg"
+  }
+}
