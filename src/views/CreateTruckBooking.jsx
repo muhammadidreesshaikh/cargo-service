@@ -40,10 +40,10 @@ class CreateTruckBooking extends Component {
             center_7: false,
             center_8: false,
         }
-    }
+    } 
 
     createCreateTruckBooking = () => {
-        const createTruckBookingRef = fire.database().ref('truck_bookings');
+        const createTruckBookingRef = fire.database().ref('bookings');
         
         const createTruckBooking = {
             select_truck: this.state.select_truck,
@@ -73,7 +73,7 @@ class CreateTruckBooking extends Component {
             }
         });
 
-        this.props.history.push('/admin/add-user');
+        this.props.history.push('/admin/create-truck-booking');
 
         console.log(createTruckBooking);
     };
@@ -97,7 +97,7 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Select Truck</label>
-                                <select name=" select_truck" class="form-control" value={this.state.name} onChange={(event) => this.handleChange(event)} value={this.state.name} onChange={(event) => this.handleChange(event)}>
+                                <select name=" select_truck" class="form-control" value={this.state.select_truck} onChange={(event) => this.handleChange(event)} value={this.state.name} onChange={(event) => this.handleChange(event)}>
                                     <option>Truck KND-435</option>
                                     <option>Truck QSW-991</option>
                                     <option>Truck AWF-573</option>
@@ -109,7 +109,7 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Capacity</label>
-                                <input name="capacity" type="text" class="form-control" placeholder="Capacity" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+                                <input name="capacity" type="text" class="form-control" placeholder="Capacity" value={this.state.capacity} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
@@ -117,35 +117,35 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Date From</label>
-                                <input name="date_from" type="date" class="form-control" placeholder="Date From" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+                                <input name="date_from" type="date" class="form-control" placeholder="Date From" value={this.state.date_from} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Date To</label>
-                                <input name="date_to" type="date" class="form-control" placeholder="Date To" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+                                <input name="date_to" type="date" class="form-control" placeholder="Date To" value={this.state.date_to} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Route From</label>
-                                <input name="route_from" type="text" class="form-control" placeholder="Route From" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+                                <input name="route_from" type="text" class="form-control" placeholder="Route From" value={this.state.route_from} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Route To</label>
-                                <input name="route_to" type="text" class="form-control" placeholder="Route To" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+                                <input name="route_to" type="text" class="form-control" placeholder="Route To" value={this.state.route_to} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Status</label>
-                                <select  name="status" class="form-control" value={this.state.name} onChange={(event) => this.handleChange(event)}>
+                                <select  name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
                                     <option>Approve</option>
                                     <option>Block</option>
                                     <option>UnBlock</option>
@@ -165,56 +165,56 @@ class CreateTruckBooking extends Component {
                                 <div className="main-check justify-content-center">
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_1" type="checkbox" class="form-check-input" />
+                                            <input name="center_1" type="checkbox" class="form-check-input" value={this.state.center_1} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 1</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_2" type="checkbox" class="form-check-input"/>
+                                            <input name="center_2" type="checkbox" class="form-check-input" value={this.state.center_2} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 2</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_3" type="checkbox" class="form-check-input"/>
+                                            <input name="center_3" type="checkbox" class="form-check-input" value={this.state.center_3} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 3</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_4" type="checkbox" class="form-check-input"/>
+                                            <input name="center_4" type="checkbox" class="form-check-input" value={this.state.center_4} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 4</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_5" type="checkbox" class="form-check-input"/>
+                                            <input name="center_5" type="checkbox" class="form-check-input" value={this.state.center_5} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 5</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_6" type="checkbox" class="form-check-input"/>
+                                            <input name="center_6" type="checkbox" class="form-check-input" value={this.state.center_6} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 6</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_7" type="checkbox" class="form-check-input"/>
+                                            <input name="center_7" type="checkbox" class="form-check-input" value={this.state.center_7} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 7</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12 col-md-3 col-lg-3">
                                         <div class="form-check">
-                                            <input name="center_8" type="checkbox" class="form-check-input"/>
+                                            <input name="center_8" type="checkbox" class="form-check-input" value={this.state.center_8} onChange={(event) => this.handleChange(event)}/>
                                             <label class="form-check-label">Center 8</label>
                                         </div>
                                     </div>
