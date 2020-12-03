@@ -34,7 +34,7 @@ class AddSupervisor extends Component {
   };
 
   render() {
-    return (
+    return ( 
       <div className="content">
         <Grid fluid>
           <Row>
@@ -68,7 +68,7 @@ class AddSupervisor extends Component {
                               <td>{item.contact}</td>
                               <td>{item.status}</td>
                               <td className="press">
-                                <Link to="/admin/add-supervisor" class="btn btn-fill btn-primary">Edit</Link>
+                                <Link to={{ pathname: "/admin/add-supervisor", data : item }} class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                               </td>
                             </tr>

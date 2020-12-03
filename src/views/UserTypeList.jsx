@@ -76,7 +76,7 @@ class UserTypeList extends Component {
                               <td>{item.contact}</td>
                               <td>{item.status}</td>
                               <td className="press">
-                                <Link to="/admin/add-user" class="btn btn-fill btn-primary">Edit</Link>
+                                <Link to={{ pathname: "/admin/add-user", data : item }} class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                               </td>
                             </tr>
@@ -85,7 +85,6 @@ class UserTypeList extends Component {
                       }
                     </tbody>
 
-                    
                   </Table>
                 }
               />

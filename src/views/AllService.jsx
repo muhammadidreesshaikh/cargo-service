@@ -44,15 +44,13 @@ class AllService extends Component {
                 // category="Here is a subtitle for this table"
                 ctTableFullWidth
                 ctTableResponsive
-                content={
+                content={ 
                   <Table striped hover> 
                     <thead>
                       <tr>
                       <th>ID</th>
-                       <th>Name</th>
                        <th>Service Type</th>
                        <th>Service Price</th>
-                       <th>Status</th>
                        <th>Actions</th>
                       </tr>
                     </thead>
@@ -63,12 +61,10 @@ class AllService extends Component {
                           return(
                             <tr key={key}>
                               <td>{item.id}</td>
-                              <td>{item.name}</td>
                               <td>{item.service_type}</td>
                               <td>{item.service_price}</td>
-                              <td>{item.status}</td>
                               <td className="press">
-                                <Link to="/admin/create-service" class="btn btn-fill btn-primary">Edit</Link>
+                                <Link to={{ pathname: "/admin/create-service", data : item }} class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                               </td>
                             </tr>

@@ -58,9 +58,9 @@ class RegisterTruckStaff extends Component {
                             <div class="form-group">
                                 <label>Status</label>
                                 <select class="form-control">
-                                    <option>Approve</option>
-                                    <option>Block</option>
-                                    <option>UnBlock</option>
+                                  <option value="approve">Approve</option>
+                                  <option value="block">Block</option>
+                                  <option value="unblock">UnBlock</option>
                                 </select>
                             </div>
                         </div>

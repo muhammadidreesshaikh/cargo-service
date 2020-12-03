@@ -22,10 +22,23 @@ class AddSupervisor extends Component {
     super(props);
 
     this.state = {
-      name: [],
-      email: [],
-      contact: [],
-      status: [],
+      data: this.props.location.data,
+      name: '',
+      email: '',
+      contact: '',
+      status: '',
+    }
+  }
+
+  componentDidMount() {
+
+    if(this.state.data) {
+      this.setState({
+        name: this.state.data.name,
+        email: this.state.data.email,
+        contact: this.state.data.contact,
+        status: this.state.data.status,
+      })
     }
   }
 
@@ -50,6 +63,23 @@ class AddSupervisor extends Component {
     this.props.history.push('/admin/add-supervisor');
 
     console.log(addSupervisor);
+  };
+
+  updateLoad = () => {
+    fire.database().ref('supervisor/' + this.state.data.id).set({
+      name: this.state.name,
+      email: this.state.email,
+      contact: this.state.contact,
+      status: this.state.status
+      }, function(error) {
+        if (error) {
+            alert("Supervisor Updation Failed.");
+        } else {
+          alert("Supervisor Updated Successfully.");
+        }
+      }); 
+  
+      this.props.history.push('/admin/all-supervisor');
   };
 
   handleChange = (event) => {
@@ -79,7 +109,7 @@ class AddSupervisor extends Component {
                                 <label>Email</label>
                                 <input name="email" type="email" class="form-control" placeholder="Email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
                             </div>
-                        </div>
+                        </div> 
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
@@ -92,16 +122,21 @@ class AddSupervisor extends Component {
                             <div class="form-group">
                                 <label>Status</label>
                                 <select name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
-                                    <option>Approve</option>
-                                    <option>Block</option>
-                                    <option>UnBlock</option>
-                                </select>
+                                  <option value="approve">Approve</option>
+                                  <option value="block">Block</option>
+                                  <option value="unblock">UnBlock</option>
+                                </select> 
                             </div>
                         </div>
 
                         <div className="col-12 col-md-12 col-lg-12">
                             <div className="text-center">
-                                <button onClick={() => this.createAddSupervisor()} type="button" class="btn btn-fill btn-primary">Done</button>
+                              {
+                                this.state.data ?
+                                <a onClick={() => this.updateLoad()} className="btn btn-primary btn-fill">Update</a>
+                                :
+                                <button onClick={() => this.createAddSupervisor()} type="button" class="btn btn-fill btn-primary">Add</button>
+                              }
                             </div>
                         </div>
                         

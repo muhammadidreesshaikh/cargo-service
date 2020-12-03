@@ -1,9 +1,38 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
+import fire from '../core/Firebase.js';
 
 class ManageTrips extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+    }
+  }
+
+  componentDidMount() {
+    this.getTrip();
+  }
+
+  getTrip = () => {
+    let tempLtrip = [];
+    const tripRef = fire.database().ref('trips');
+
+    tripRef.on('value', (snapshot) => {
+      const trip = snapshot.val();
+
+      for (let id in trip) {
+        tempLtrip.push({ id, ...trip[id] });
+      }
+      this.setState({ data: tempLtrip });
+    });
+  };
+
   render() {
     return (
       <div className="content">
@@ -13,99 +42,43 @@ class ManageTrips extends Component {
               <Card
                 title="Manage Trips"
                 // category="Here is a subtitle for this table"
-                ctTableFullWidth
+                ctTableFullWidth 
                 ctTableResponsive
                 content={
                   <Table striped hover>
                     <thead>
                       <tr>
-                       <th>Truck No.</th>
+                       <th>Truck No.</th> 
                        <th>Route From</th>
                        <th>Route To</th>
                        <th>Date From</th>
                        <th>Date To</th>
                        <th>Expected Date-Time</th>
                        <th>Stop Points</th>
-                       <th>Status</th>
                        <th>Actions</th>
                       </tr>
                     </thead>
+
                     <tbody>
-                      <tr>
-                        <td>KHQ-435</td>
-                        <td>Karachi</td>
-                        <td>Lahore</td>
-                        <td>02-05-2020</td>
-                        <td>20-05-2020</td>
-                        <td>12-06-2020 - 02:00-06:30AM</td>
-                        <td className="stop-point"> 
-                            <p>Center 1</p>
-                            <p>Center 2</p>
-                            <p>Center 3</p>
-                        </td>
-                        <td>Approve</td>
-                        <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
-                          <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>KHQ-435</td>
-                        <td>Multan</td>
-                        <td>Punjab</td>
-                        <td>20-07-2020</td>
-                        <td>08-07-2020</td>
-                        <td>22-08-2020 - 05:00-09:20PM</td>
-                        <td className="stop-point"> 
-                            <p>Center 1</p>
-                            <p>Center 2</p>
-                            <p>Center 3</p>
-                        </td>
-                        <td>Approve</td>
-                        <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
-                          <button type="button" class="btn btn-fill btn-danger">Delete</button>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>KHQ-435</td>
-                        <td>Punjab</td>
-                        <td>Karachi</td>
-                        <td>30-10-2020</td>
-                        <td>15-10-2020</td>
-                        <td>18-05-2020 - 03:20-01:45AM</td>
-                        <td className="stop-point"> 
-                            <p>Center 1</p>
-                            <p>Center 2</p>
-                            <p>Center 3</p>
-                        </td>
-                        <td>Reject</td>
-                        <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
-                          <button type="button" class="btn btn-fill btn-danger">Delete</button>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>KHQ-435</td>
-                        <td>Multan</td>
-                        <td>Sukkur</td>
-                        <td>18-11-2020</td>
-                        <td>22-11-2020</td>
-                        <td>18-05-2020 - 06:30-05:00PM</td>
-                        <td className="stop-point"> 
-                            <p>Center 1</p>
-                            <p>Center 2</p>
-                            <p>Center 3</p>
-                        </td>
-                        <td>Approve</td>
-                        <td className="press">
-                          <button type="button" class="btn btn-fill btn-primary">Edit</button>
-                          <button type="button" class="btn btn-fill btn-danger">Delete</button>
-                        </td>
-                      </tr>
+                      {
+                        this.state.data.map((item, key) => {
+                          return(
+                            <tr key={key}>
+                              <td>{item.select_truck}</td>
+                              <td>{item.route_from}</td>
+                              <td>{item.route_to}</td>
+                              <td>{item.date_from}</td>
+                              <td>{item.date_to}</td>
+                              <td>{item.date_time}</td>
+                              <td>Awais will work</td>
+                              <td className="press">
+                                <Link to={{ pathname: "/admin/create-trip", data : item }} class="btn btn-fill btn-primary">Edit</Link>
+                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                              </td>
+                            </tr>
+                          )
+                        })
+                      }
                     </tbody>
                   </Table>
                 }

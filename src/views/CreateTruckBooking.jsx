@@ -22,13 +22,14 @@ class CreateTruckBooking extends Component {
         super(props);
 
         this.state = {
-            select_truck: [],
-            capacity: [],
-            date_from: [],
-            date_to: [],
-            route_from: [],
-            route_to: [],
-            status: [],
+            data: this.props.location.data,
+            select_truck: '',
+            capacity: '',
+            date_from: '',
+            date_to: '',
+            route_from: '',
+            route_to: '',
+            status: '',
 
             // checkbox
             center_1: false,
@@ -41,6 +42,22 @@ class CreateTruckBooking extends Component {
             center_8: false,
         }
     } 
+
+    componentDidMount() {
+        // console.log(this.state.data)
+
+        if(this.state.data) {
+          this.setState({
+            select_truck: this.state.data.select_truck,
+            capacity: this.state.data.capacity,
+            date_from: this.state.data.date_from,
+            date_to: this.state.data.date_to,
+            route_from: this.state.data.route_from,
+            route_to: this.state.data.route_to,
+            status: this.state.data.status,
+          })
+        }
+    }
 
     createCreateTruckBooking = () => {
         const createTruckBookingRef = fire.database().ref('bookings');
@@ -65,6 +82,8 @@ class CreateTruckBooking extends Component {
             center_8: this.state.center_8,
         };
 
+        // console.log(createTruckBooking);
+
         createTruckBookingRef.push(createTruckBooking, function(error) {
             if (error) {
             alert("Data could not be saved." + error);
@@ -75,8 +94,28 @@ class CreateTruckBooking extends Component {
 
         this.props.history.push('/admin/create-truck-booking');
 
-        console.log(createTruckBooking);
+        console.log(createTruckBooking); 
     };
+
+    updateLoad = () => {
+        fire.database().ref('bookings/' + this.state.data.id).set({
+            select_truck: this.state.data.select_truck,
+            capacity: this.state.data.capacity,
+            date_from: this.state.data.date_from,
+            date_to: this.state.data.date_to,
+            route_from: this.state.data.route_from,
+            route_to: this.state.data.route_to,
+            status: this.state.data.status
+          }, function(error) {
+            if (error) {
+                alert("Bookings Updation Failed.");
+            } else {
+              alert("Bookings Updated Successfully.");
+            }
+          }); 
+      
+          this.props.history.push('/admin/booking-truck');
+      };
 
         handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
@@ -97,7 +136,7 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Select Truck</label>
-                                <select name=" select_truck" class="form-control" value={this.state.select_truck} onChange={(event) => this.handleChange(event)} value={this.state.name} onChange={(event) => this.handleChange(event)}>
+                                <select name="select_truck" class="form-control" value={this.state.select_truck} onChange={(event) => this.handleChange(event)}>
                                     <option>Truck KND-435</option>
                                     <option>Truck QSW-991</option>
                                     <option>Truck AWF-573</option>
@@ -112,7 +151,6 @@ class CreateTruckBooking extends Component {
                                 <input name="capacity" type="text" class="form-control" placeholder="Capacity" value={this.state.capacity} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
-
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
@@ -146,10 +184,9 @@ class CreateTruckBooking extends Component {
                             <div class="form-group">
                                 <label>Status</label>
                                 <select  name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
-                                    <option>Approve</option>
-                                    <option>Block</option>
-                                    <option>UnBlock</option>
-                                    <option>Default</option>
+                                    <option value="approve">Approve</option>
+                                    <option value="block">Block</option>
+                                    <option value="unblock">UnBlock</option>
                                 </select> 
                             </div>
                         </div>
@@ -224,7 +261,12 @@ class CreateTruckBooking extends Component {
 
                         <div className="col-12 col-md-12 col-lg-12">
                             <div className="text-center">
-                                <button onClick={() => this.createCreateTruckBooking()} type="button" class="btn btn-fill btn-primary">Done</button>
+                                {
+                                    this.state.data ?
+                                    <a onClick={() => this.updateLoad()} className="btn btn-primary btn-fill">Update</a>
+                                    :
+                                    <button onClick={() => this.createCreateTruckBooking()} type="button" class="btn btn-fill btn-primary">Add</button>
+                                }
                             </div>
                         </div>
 

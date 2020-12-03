@@ -129,10 +129,10 @@ class PickupDetails extends Component {
                             <div class="form-group">
                                 <label>Status</label>
                                 <select class="form-control">
-                                    <option>Processing</option>
-                                    <option>Estimated</option>
-                                    <option>Pickuped</option>
-                                    <option>Delivered</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="estimated">Estimated</option>
+                                    <option value="pickuped">Pickuped</option>
+                                    <option value="delivered">Delivered</option>
                                 </select>
                             </div>
                         </div>

@@ -22,8 +22,19 @@ class CreateService extends Component {
     super(props);
 
     this.state = {
-      service_type: [],
-      service_price: [],
+      data: this.props.location.data,
+      service_type: '',
+      service_price: '',
+    }
+  }
+
+  componentDidMount() {
+
+    if(this.state.data) {
+      this.setState({
+        service_type: this.state.data.service_type,
+        service_price: this.state.data.service_price,
+      })
     }
   }
 
@@ -48,6 +59,21 @@ class CreateService extends Component {
     console.log(service);
   };
 
+  updateLoad = () => {
+    fire.database().ref('services/' + this.state.data.id).set({
+      service_type: this.state.service_type,
+      service_price: this.state.service_price
+      }, function(error) {
+        if (error) {
+            alert("Services Updation Failed.");
+        } else {
+          alert("Services Updated Successfully.");
+        }
+      }); 
+  
+      this.props.history.push('/admin/all-service');
+  };
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
@@ -62,14 +88,14 @@ class CreateService extends Component {
               <Card
                 title="Create Service Type"
                 content={
-                    <form>
+                    <form> 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Service Type</label>
                                 <select name="service_type" class="form-control" value={this.state.service_type} onChange={(event) => this.handleChange(event)}>
-                                    <option>Standard</option>
-                                    <option>Express</option>
-                                    <option>Fast</option>
+                                    <option value="standard">Standard</option>
+                                    <option value="express">Express</option>
+                                    <option value="fast">Fast</option>
                                 </select>
                             </div>
                         </div>
@@ -83,7 +109,12 @@ class CreateService extends Component {
 
                         <div className="col-12 col-md-12 col-lg-12">
                             <div className="text-center">
-                                <button onClick={() => this.createService()} type="button" class="btn btn-fill btn-primary">Done</button>
+                              {
+                                this.state.data ?
+                                <a onClick={() => this.updateLoad()} className="btn btn-primary btn-fill">Update</a>
+                                :
+                                <button onClick={() => this.createService()} type="button" class="btn btn-fill btn-primary">Add</button>
+                              }
                             </div>
                         </div>
                         

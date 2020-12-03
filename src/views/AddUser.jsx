@@ -22,15 +22,33 @@ class AddUser extends Component {
     super(props);
 
     this.state = {
-      name: [],
-      email: [],
-      password: [],
+      data: this.props.location.data,
+      name: '',
+      email: '',
+      password: '',
       // commission_percentage: [],
-      cargo_company: [],
-      user_type: [],
+      cargo_company: '',
+      user_type: '',
       no_cargo: false,
-      contact: [],
-      status: [],
+      contact: '',
+      status: '',
+    }
+  }
+
+  componentDidMount() {
+
+
+    if(this.state.data) {
+      this.setState({
+        name: this.state.data.name,
+        email: this.state.data.email,
+        password: this.state.data.password,
+        cargo_company: this.state.data.cargo_company,
+        user_type: this.state.data.user_type,
+        no_cargo: this.state.no_cargo,
+        contact: this.state.data.contact,
+        status: this.state.data.status,
+      })
     }
   }
 
@@ -54,12 +72,34 @@ class AddUser extends Component {
         alert("Data could not be saved." + error);
       } else {
         alert("Data saved successfully.");
-      }
+      } 
     });
 
     this.props.history.push('/admin/add-user');
 
     console.log(user);
+  };
+
+  updateLoad = () => {
+    fire.database().ref('users/' + this.state.data.id).set({
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      // commission_percentage: this.state.commission_percentage,
+      cargo_company: this.state.cargo_company,
+      user_type: this.state.user_type,
+      no_cargo: this.state.no_cargo,
+      contact: this.state.contact,
+      status: this.state.status
+      }, function(error) {
+        if (error) {
+            alert("Users Updation Failed.");
+        } else {
+          alert("Users Updated Successfully.");
+        }
+      }); 
+  
+      this.props.history.push('/admin/user-type-list');
   };
 
   handleChange = (event) => {
@@ -121,11 +161,11 @@ class AddUser extends Component {
                       <div class="form-group">
                         <label>User Type</label>
                         <select name="user_type" class="form-control" value={this.state.user_type} onChange={(event) => this.handleChange(event)}>
-                          <option>Cargo Company</option>
-                          <option>Customer Company</option>
-                          <option>Agent Company</option>
-                          <option>Transport Company</option>
-                          <option>Colloection Company</option>
+                          <option value="cargo">Cargo</option>
+                          <option value="customer">Customer</option>
+                          <option value="agent">Agent</option>
+                          <option value="transport">Transport</option>
+                          <option value="collection">Collection</option>
                         </select>
                       </div>
                     </div>
@@ -147,17 +187,21 @@ class AddUser extends Component {
                       <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
-                          <option>Approve</option>
-                          <option>Block</option>
-                          <option>UnBlock</option>
+                          <option value="approve">Approve</option>
+                          <option value="block">Block</option>
+                          <option value="unblock">UnBlock</option>
                         </select>
                       </div>
                     </div>
 
                     <div className="col-12 col-md-12 col-lg-12">
                         <div className="press text-center">
+                          {
+                            this.state.data ?
+                            <a onClick={() => this.updateLoad()} className="btn btn-primary btn-fill">Update</a>
+                            :
                             <button onClick={() => this.createUser()} type="button" class="btn btn-fill btn-primary">Add</button>
-                            <button type="button" class="btn btn-fill btn-success">Update</button>
+                          }
                         </div>
                     </div>
                     
