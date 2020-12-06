@@ -59,7 +59,7 @@ class AllAgents extends Component {
                        <th>Status</th>
                        <th>Actions</th>
                       </tr>
-                    </thead>
+                    </thead> 
 
                     <tbody>
                       { 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Card from "components/Card/Card.jsx";
 import fire from '../core/Firebase.js';
 
-class AllTruckStaff extends Component {
+class AllTrucks extends Component {
 
   constructor(props) {
     super(props);
@@ -16,20 +16,20 @@ class AllTruckStaff extends Component {
   }
 
   componentDidMount() {
-    this.getTruckStaff();
+    this.getTruck();
   }
 
-  getTruckStaff = () => {
-    let tempLtruckStaff = [];
-    const truckStaffRef = fire.database().ref('truck-staff');
+  getTruck = () => {
+    let tempLtruck = [];
+    const truckRef = fire.database().ref('trucks');
 
-    truckStaffRef.on('value', (snapshot) => {
-      const truckStaff = snapshot.val();
+    truckRef.on('value', (snapshot) => {
+      const truck = snapshot.val();
 
-      for (let id in truckStaff) {
-        tempLtruckStaff.push({ id, ...truckStaff[id] });
+      for (let id in truck) {
+        tempLtruck.push({ id, ...truck[id] });
       }
-      this.setState({ data: tempLtruckStaff });
+      this.setState({ data: tempLtruck });
     });
   };
 
@@ -40,7 +40,7 @@ class AllTruckStaff extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="All Truck Staff"
+                title="All Trucks"
                 // category="Here is a subtitle for this table"
                 ctTableFullWidth
                 ctTableResponsive
@@ -48,27 +48,31 @@ class AllTruckStaff extends Component {
                   <Table striped hover>
                     <thead>
                       <tr>
-                       <th>Name</th>
-                       <th>ID Card</th>
-                       <th>Driving License</th>
-                       <th>Contact</th>
+                       <th>Number Plate</th>
+                       <th>Location</th>
+                       <th>Route From</th>
+                       <th>Route To</th>
+                       <th>Booking</th>
+                       <th>Assign Staff</th>
                        <th>Status</th>
                        <th>Actions</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      {
+                      { 
                         this.state.data.map((item, key) => {
                           return(
                             <tr key={key}>
-                              <td>{item.name}</td>
-                              <td>{item.id_card}</td>
-                              <td>{item.driving_license}</td>
-                              <td>{item.contact}</td>
+                              <td>{item.number_plate}</td>
+                              <td>{item.location}</td>
+                              <td>{item.route_from}</td>
+                              <td>{item.route_to}</td>
+                              <td>{item.booking}</td>
+                              <td>{item.assign_staff}</td>
                               <td>{item.status}</td>
                               <td className="press">
-                                <Link to={{ pathname: "/admin/register-truck-staff", data : item }} class="btn btn-fill btn-primary">Edit</Link>
+                                <Link to={{ pathname: "/admin/register-truck", data : item }} class="btn btn-fill btn-primary">Edit</Link>
                                 <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
                               </td>
                             </tr>
@@ -76,6 +80,7 @@ class AllTruckStaff extends Component {
                         })
                       }
                     </tbody>
+
                   </Table>
                 }
               />
@@ -88,4 +93,4 @@ class AllTruckStaff extends Component {
   }
 }
 
-export default AllTruckStaff;
+export default AllTrucks;
