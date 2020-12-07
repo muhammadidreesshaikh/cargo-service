@@ -61,7 +61,7 @@ class AddStaff extends Component {
       }
     });
 
-    this.props.history.push('/admin/add-staff');
+    this.props.history.push('/admin/all-staffs');
 
     console.log(staff);
   };

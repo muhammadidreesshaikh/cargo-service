@@ -24,6 +24,7 @@ import AllService from "views/AllService.jsx";
 import AddUser from "views/AddUser.jsx";
 import Login from "views/Login.jsx";
 import Forget from "views/Forget.jsx";
+import Sample from "views/Sample";
 import Icons from "views/Icons.jsx";
 import Typography from "views/Typography.jsx";
 import Maps from "views/Maps.jsx";
@@ -244,6 +245,14 @@ const dashboardRoutes = [
     name: "All Agents",
     icon: "pe-7s-right-arrow",
     component: AllAgents,
+    layout: "/admin"
+  },
+  {
+    display: true,
+    path: "/sample",
+    name: "Sample",
+    icon: "pe-7s-right-arrow",
+    component: Sample,
     layout: "/admin"
   },
   {

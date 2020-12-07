@@ -10,11 +10,6 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import fire from '../core/Firebase.js';
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/faces/face-3.jpg"; 
 
 class AddSupervisor extends Component {
 
@@ -60,13 +55,13 @@ class AddSupervisor extends Component {
       }
     });
 
-    this.props.history.push('/admin/add-supervisor');
+    this.props.history.push('/admin/all-supervisor');
 
     console.log(addSupervisor);
   };
 
   updateLoad = () => {
-    fire.database().ref('supervisor/' + this.state.data.id).set({
+    fire.database().ref('supervisors/' + this.state.data.id).set({
       name: this.state.name,
       email: this.state.email,
       contact: this.state.contact,
@@ -110,7 +105,7 @@ class AddSupervisor extends Component {
                                 <input name="email" type="email" class="form-control" placeholder="Email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div> 
-
+ 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Contact</label>

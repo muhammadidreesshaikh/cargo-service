@@ -3,18 +3,10 @@ import {
   Grid,
   Row,
   Col,
-  FormGroup,
-  ControlLabel,
-  FormControl
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
 import fire from '../core/Firebase.js';
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/faces/face-3.jpg";
 
 class RegisterTruckStaff extends Component {
 
@@ -32,7 +24,7 @@ class RegisterTruckStaff extends Component {
   }
 
   componentDidMount() {
-
+    console.log(this.state.data);
     if(this.state.data) {
       this.setState({
         name: this.state.data.name,
@@ -45,9 +37,9 @@ class RegisterTruckStaff extends Component {
   }
 
   createTruckStaff = () => {
-    const truckStaffRef = fire.database().ref('truck-staff');
+    const truckStaffsRef = fire.database().ref('truck-staff');
   
-    const truckStaff = {
+    const truckStaffs = {
       name: this.state.name,
       id_card: this.state.id_card,
       driving_license: this.state.driving_license,
@@ -55,7 +47,7 @@ class RegisterTruckStaff extends Component {
       status: this.state.status
     };
 
-    truckStaffRef.push(truckStaff, function(error) {
+    truckStaffsRef.push(truckStaffs, function(error) {
       if (error) {
         alert("Data could not be saved." + error);
       } else {
@@ -63,13 +55,13 @@ class RegisterTruckStaff extends Component {
       } 
     });
 
-    this.props.history.push('/admin/register-truck-staff');
+    this.props.history.push('/admin/all-truck-staff');
 
-    console.log(truckStaff);
+    console.log(truckStaffs);
   };
 
   updateLoad = () => {
-    fire.database().ref('truckStaff/' + this.state.data.id).set({
+    fire.database().ref('truck-staff/' + this.state.data.id).set({
       name: this.state.name,
       id_card: this.state.id_card,
       driving_license: this.state.driving_license,
@@ -77,13 +69,13 @@ class RegisterTruckStaff extends Component {
       status: this.state.status
       }, function(error) {
         if (error) {
-            alert("Truck Staff Updation Failed.");
+            alert("Truck Staffs Updation Failed.");
         } else {
-          alert("Truck Staff Updated Successfully.");
+          alert("Truck Staffs Updated Successfully.");
         }
       }); 
   
-      this.props.history.push('/admin/all-truck-staff');
+      this.props.history.push('/admin/all-truck-staffs');
   };
 
   handleChange = (event) => {
@@ -146,7 +138,7 @@ class RegisterTruckStaff extends Component {
                                 this.state.data ?
                                 <a onClick={() => this.updateLoad()} className="btn btn-primary btn-fill">Update</a>
                                 :
-                                <button onClick={() => this.createTruckStaff()} type="button" class="btn btn-fill btn-primary">Add</button>
+                                <a onClick={() => this.createTruckStaff()} class="btn btn-fill btn-primary">Add</a>
                               }
                             </div>
                         </div>

@@ -55,14 +55,14 @@ class AddSupervisor extends Component {
                        <th>Status</th>
                        <th>Actions</th>
                       </tr>
-                    </thead>
+                    </thead> 
 
                     <tbody>
                       {
                         this.state.data.map((item, key) => {
                           return(
                             <tr key={key}>
-                              <td>{item.id}</td>
+                              <td>{item.id}</td> 
                               <td>{item.name}</td>
                               <td>{item.email}</td>
                               <td>{item.contact}</td>
