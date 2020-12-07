@@ -10,11 +10,6 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import fire from '../core/Firebase.js';
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/faces/face-3.jpg";
 
 class RegisterTruck extends Component {
 
@@ -69,7 +64,7 @@ class RegisterTruck extends Component {
       } 
     });
 
-    this.props.history.push('/admin/register-truck');
+    this.props.history.push('/admin/all-trucks');
 
     console.log(truck);
   };

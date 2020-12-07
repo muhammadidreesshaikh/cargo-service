@@ -3,7 +3,7 @@ import { Grid, Row, Col, Table } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 import Card from "components/Card/Card.jsx";
-import fire from '../core/Firebase.js';
+import fire from '../core/Firebase.js'; 
 
 class AllService extends Component {
 

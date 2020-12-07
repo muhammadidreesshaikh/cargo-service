@@ -54,7 +54,7 @@ class CreateService extends Component {
       }
     });
           
-    this.props.history.push('/admin/create-service');
+    this.props.history.push('/admin/all-service');
 
     console.log(service);
   };

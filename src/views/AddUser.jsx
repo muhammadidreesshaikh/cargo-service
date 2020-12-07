@@ -75,7 +75,7 @@ class AddUser extends Component {
       } 
     });
 
-    this.props.history.push('/admin/add-user');
+    this.props.history.push('/admin/user-type-list');
 
     console.log(user);
   };

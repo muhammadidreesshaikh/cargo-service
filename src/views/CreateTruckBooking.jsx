@@ -92,7 +92,7 @@ class CreateTruckBooking extends Component {
             }
         });
 
-        this.props.history.push('/admin/create-truck-booking');
+        this.props.history.push('/admin/booking-truck');
 
         console.log(createTruckBooking); 
     };

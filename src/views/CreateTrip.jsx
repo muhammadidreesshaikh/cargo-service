@@ -88,7 +88,7 @@ class CreateTrip extends Component {
           }
         });
     
-        this.props.history.push('/admin/create-trip');
+        this.props.history.push('/admin/manage-trips');
     
         console.log(trip);
     };
