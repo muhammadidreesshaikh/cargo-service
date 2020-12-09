@@ -18,6 +18,7 @@ class RegisterTruck extends Component {
 
     this.state = {
       data: this.props.location.data,
+      assign: '',
       number_plate: '',
       location: '',
       route_from: '',
@@ -29,6 +30,7 @@ class RegisterTruck extends Component {
   }
 
   componentDidMount() {
+    this.getTruck();
 
     if(this.state.data) {
       this.setState({
@@ -89,6 +91,22 @@ class RegisterTruck extends Component {
       this.props.history.push('/admin/all-trucks');
   };
 
+  getTruck = () => {
+    let tempLtruck = [];
+    const truckRef = fire.database().ref('trucks');
+
+    truckRef.on('value', (snapshot) => {
+      const truck = snapshot.val();
+
+      for (let id in truck) {
+        tempLtruck.push({ id, ...truck[id] });
+      }
+      this.setState({ assign: tempLtruck });
+    });
+
+    console.log(this.state.assign);
+  };
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
@@ -130,7 +148,7 @@ class RegisterTruck extends Component {
                                 <label>Route To</label>
                                 <input name="route_to" type="route" class="form-control" placeholder="Route To" value={this.state.route_to} onChange={(event) => this.handleChange(event)}/>
                             </div>
-                        </div>
+                        </div> 
 
                         <div className="col-12 col-md-4 col-lg-4">
                             <div class="form-group">
@@ -143,11 +161,13 @@ class RegisterTruck extends Component {
                             <div class="form-group">
                                 <label>Assign Staff</label>
                                 <select name="assign_staff" class="form-control" value={this.state.assign_staff} onChange={(event) => this.handleChange(event)}>
-                                  <option value="adil">Adil</option>
-                                  <option value="karan">Karan</option>
-                                  <option value="raffay">Raffay</option>
-                                  <option value="rohit">Rohit</option>
-                                  <option value="salman">Salman</option>
+                                  { 
+                                    this.state.assign && this.state.assign.map((item, key) => {
+                                      return(
+                                      <option key={key}>{item.assign_staff}</option>                            
+                                      )
+                                    })
+                                  }
                                 </select>
                             </div>
                         </div>

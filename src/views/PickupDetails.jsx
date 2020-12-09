@@ -9,11 +9,6 @@ import {
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/faces/face-3.jpg";
 
 class PickupDetails extends Component {
   render() {

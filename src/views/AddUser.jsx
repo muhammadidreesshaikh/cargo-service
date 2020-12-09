@@ -10,11 +10,6 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import fire from '../core/Firebase.js';
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/faces/face-3.jpg";
 
 class AddUser extends Component {
 
@@ -36,7 +31,6 @@ class AddUser extends Component {
   }
 
   componentDidMount() {
-
 
     if(this.state.data) {
       this.setState({
