@@ -18,7 +18,8 @@ class CreateTruckBooking extends Component {
 
         this.state = {
             data: this.props.location.data,
-            select_truck: '',
+            truck: '',
+            number_plate: '',
             capacity: '',
             date_from: '',
             date_to: '',
@@ -40,10 +41,11 @@ class CreateTruckBooking extends Component {
 
     componentDidMount() {
         // console.log(this.state.data)
+        this.getTruck();
 
         if(this.state.data) {
           this.setState({
-            select_truck: this.state.data.select_truck,
+            number_plate: this.state.data.number_plate,
             capacity: this.state.data.capacity,
             date_from: this.state.data.date_from,
             date_to: this.state.data.date_to,
@@ -58,7 +60,7 @@ class CreateTruckBooking extends Component {
         const createTruckBookingRef = fire.database().ref('bookings');
         
         const createTruckBooking = {
-            select_truck: this.state.select_truck,
+            number_plate: this.state.number_plate,
             capacity: this.state.capacity,
             date_from: this.state.date_from,
             date_to: this.state.date_to,
@@ -94,7 +96,7 @@ class CreateTruckBooking extends Component {
 
     updateLoad = () => {
         fire.database().ref('bookings/' + this.state.data.id).set({
-            select_truck: this.state.data.select_truck,
+            number_plate: this.state.data.number_plate,
             capacity: this.state.data.capacity,
             date_from: this.state.data.date_from,
             date_to: this.state.data.date_to,
@@ -110,16 +112,32 @@ class CreateTruckBooking extends Component {
           }); 
       
           this.props.history.push('/admin/booking-truck');
-      };
+    };
 
-        handleChange = (event) => {
+    getTruck = () => {
+        let tempLtruck = [];
+        const truckRef = fire.database().ref('trucks');
+    
+        truckRef.on('value', (snapshot) => {
+          const truck = snapshot.val();
+    
+          for (let id in truck) {
+            tempLtruck.push({ id, ...truck[id] });
+          }
+          this.setState({ truck: tempLtruck });
+        });
+    
+        console.log(this.state.truck);
+    };
+
+    handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
         console.log(this.state);
     }
 
 
   render() {
-    return (
+    return ( 
       <div className="content">
         <Grid fluid>
           <Row>
@@ -131,11 +149,14 @@ class CreateTruckBooking extends Component {
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Select Truck</label>
-                                <select name="select_truck" class="form-control" value={this.state.select_truck} onChange={(event) => this.handleChange(event)}>
-                                    <option>Truck KND-435</option>
-                                    <option>Truck QSW-991</option>
-                                    <option>Truck AWF-573</option>
-                                    <option>Truck GQA-755</option>
+                                <select name="number_plate" class="form-control" value={this.state.number_plate} onChange={(event) => this.handleChange(event)}>
+                                    { 
+                                        this.state.truck && this.state.truck.map((item, key) => {
+                                            return(
+                                                <option key={key}>{item.number_plate}</option>                            
+                                            )
+                                        })
+                                    }
                                 </select>
                             </div>
                         </div>

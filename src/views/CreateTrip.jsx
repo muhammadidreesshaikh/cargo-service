@@ -18,6 +18,7 @@ class CreateTrip extends Component {
     
         this.state = {
             data: this.props.location.data,
+            truck: '',
             select_truck: '',
             route_from: '',
             route_to: '',
@@ -38,7 +39,7 @@ class CreateTrip extends Component {
       }
 
     componentDidMount() {
-
+        this.getTruckStaff();
 
         if(this.state.data) {
             this.setState({
@@ -105,6 +106,22 @@ class CreateTrip extends Component {
           }); 
       
           this.props.history.push('/admin/manage-trips');
+    };
+
+    getTruckStaff = () => {
+        let tempLtruck = [];
+        const truckRef = fire.database().ref('trucks');
+    
+        truckRef.on('value', (snapshot) => {
+          const truck = snapshot.val();
+    
+          for (let id in truck) {
+            tempLtruck.push({ id, ...truck[id] });
+          }
+          this.setState({ truck: tempLtruck });
+        });
+    
+        console.log(this.state.truck);
       };
     
     handleChange = (event) => {
@@ -126,10 +143,13 @@ class CreateTrip extends Component {
                             <div class="form-group">
                                 <label>Select Truck</label>
                                 <select name="select_truck" class="form-control" value={this.state.select_truck} onChange={(event) => this.handleChange(event)}>
-                                    <option>Truck KND-435</option>
-                                    <option>Truck QSW-991</option>
-                                    <option>Truck AWF-573</option>
-                                    <option>Truck GQA-755</option>
+                                    { 
+                                        this.state.truck && this.state.truck.map((item, key) => {
+                                            return(
+                                                <option key={key}>{item.number_plate}</option>                            
+                                            )
+                                        })
+                                    }
                                 </select>
                             </div>
                         </div>

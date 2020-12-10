@@ -18,6 +18,7 @@ class AddUser extends Component {
 
     this.state = {
       data: this.props.location.data,
+      cargo: '',
       name: '',
       email: '',
       password: '',
@@ -31,6 +32,7 @@ class AddUser extends Component {
   }
 
   componentDidMount() {
+    this.getUser();
 
     if(this.state.data) {
       this.setState({
@@ -96,6 +98,23 @@ class AddUser extends Component {
       this.props.history.push('/admin/user-type-list');
   };
 
+  getUser = () => {
+    let tempLuser = [];
+    const userRef = fire.database().ref('users');
+
+    userRef.on('value', (snapshot) => {
+      const user = snapshot.val();
+
+      for (let id in user) {
+        tempLuser.push({ id, ...user[id] });
+      }
+      
+      let filtered = tempLuser.filter(item => item.user_type == 'cargo');
+
+      this.setState({ cargo: filtered });
+    });
+  }; 
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
@@ -143,10 +162,13 @@ class AddUser extends Component {
                       <div class="form-group">
                         <label>Cargo Company</label>
                         <select name="cargo_company" class="form-control" value={this.state.cargo_company} onChange={(event) => this.handleChange(event)}>
-                          <option>TCS</option>
-                          <option>Leopard</option>
-                          <option>M&P</option>
-                          <option>BlueX</option>
+                          { 
+                            this.state.cargo && this.state.cargo.map((item, key) => {
+                              return(
+                                  <option key={key}>{item.cargo_company}</option>                            
+                              )
+                            })
+                          }
                         </select>
                       </div>
                     </div>

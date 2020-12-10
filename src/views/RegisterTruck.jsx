@@ -93,7 +93,7 @@ class RegisterTruck extends Component {
 
   getTruck = () => {
     let tempLtruck = [];
-    const truckRef = fire.database().ref('trucks');
+    const truckRef = fire.database().ref('truck-staff');
 
     truckRef.on('value', (snapshot) => {
       const truck = snapshot.val();
@@ -164,7 +164,7 @@ class RegisterTruck extends Component {
                                   { 
                                     this.state.assign && this.state.assign.map((item, key) => {
                                       return(
-                                      <option key={key}>{item.assign_staff}</option>                            
+                                      <option key={key}>{item.name}</option>                            
                                       )
                                     })
                                   }

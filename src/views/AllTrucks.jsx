@@ -40,7 +40,7 @@ class AllTrucks extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="All Trucks"
+                title="All Trucks" 
                 // category="Here is a subtitle for this table"
                 ctTableFullWidth
                 ctTableResponsive
