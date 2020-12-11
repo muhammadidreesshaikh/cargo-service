@@ -36,6 +36,12 @@ class AllCargo extends Component {
     });
   };
 
+  deleteCargo = (id) => {
+    const cargoRef = fire.database().ref('users').child(id);
+    cargoRef.remove();
+    this.getCargo();
+  };
+
   render() {
     return (
       <div className="content">
@@ -72,7 +78,7 @@ class AllCargo extends Component {
                               <td>{item.status}</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/add-user", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a type="button" class="btn btn-fill btn-danger pl-3"  onClick={() => this.deleteCargo(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )

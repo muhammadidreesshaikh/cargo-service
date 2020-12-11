@@ -33,6 +33,12 @@ class RegisterTruck extends Component {
     });
   };
 
+  deleteBooking = (id) => {
+    const bookingRef = fire.database().ref('bookings').child(id);
+    bookingRef.remove();
+    this.getBooking();
+  };
+
   render() {
     return (
       <div className="content">
@@ -71,7 +77,7 @@ class RegisterTruck extends Component {
                                   <td>{item.status}</td>
                                   <td className="press">
                                     <Link to={{ pathname: "/admin/create-truck-booking", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                    <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                    <a type="button" class="btn btn-fill btn-danger pl-3" onClick={() => this.deleteBooking(item.id)}>Delete</a>
                                   </td>
                                 </tr>
                               )

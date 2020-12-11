@@ -33,6 +33,12 @@ class UserTypeList extends Component {
     });
   };
 
+  deleteUser = (id) => {
+    const userRef = fire.database().ref('users').child(id);
+    userRef.remove();
+    this.getUser();
+  };
+
   render() {
     return (
       <div className="content">
@@ -77,7 +83,7 @@ class UserTypeList extends Component {
                               <td>{item.status}</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/add-user", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a class="btn btn-fill btn-danger pl-3" onClick={() => this.deleteUser(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )

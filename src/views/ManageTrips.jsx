@@ -33,6 +33,12 @@ class ManageTrips extends Component {
     });
   };
 
+  deleteTrip = (id) => {
+    const tripRef = fire.database().ref('trips').child(id);
+    tripRef.remove();
+    this.getTrip();
+  };
+
   render() {
     return (
       <div className="content">
@@ -73,7 +79,7 @@ class ManageTrips extends Component {
                               <td>Awais will work</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/create-trip", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a type="button" class="btn btn-fill btn-danger pl-3" onClick={() => this.deleteTrip(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )

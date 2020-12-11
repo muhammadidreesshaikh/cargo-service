@@ -33,6 +33,12 @@ class AddSupervisor extends Component {
     });
   };
 
+  deleteSupervisor = (id) => {
+    const supervisorRef = fire.database().ref('supervisors').child(id);
+    supervisorRef.remove();
+    this.getSupervisor();
+  };
+
   render() {
     return ( 
       <div className="content">
@@ -69,7 +75,7 @@ class AddSupervisor extends Component {
                               <td>{item.status}</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/add-supervisor", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a type="button" class="btn btn-fill btn-danger pl-3" onClick={() => this.deleteSupervisor(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )

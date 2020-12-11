@@ -36,6 +36,12 @@ class AllAgents extends Component {
     });
   };
 
+  deleteAgent = (id) => {
+    const agentRef = fire.database().ref('users').child(id);
+    agentRef.remove();
+    this.getAgent();
+  };
+
   render() {
     return (
       <div className="content">
@@ -74,7 +80,7 @@ class AllAgents extends Component {
                               <td>{item.status}</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/add-user", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a type="button" class="btn btn-fill btn-danger pl-3"  onClick={() => this.deleteAgent(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )

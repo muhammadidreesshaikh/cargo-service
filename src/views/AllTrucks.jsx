@@ -33,6 +33,12 @@ class AllTrucks extends Component {
     });
   };
 
+  deleteTruck = (id) => {
+    const truckRef = fire.database().ref('trucks').child(id);
+    truckRef.remove();
+    this.getTruck();
+  };
+
   render() {
     return (
       <div className="content">
@@ -73,7 +79,7 @@ class AllTrucks extends Component {
                               <td>{item.status}</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/register-truck", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a type="button" class="btn btn-fill btn-danger pl-3" onClick={() => this.deleteTruck(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )

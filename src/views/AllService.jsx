@@ -33,6 +33,12 @@ class AllService extends Component {
     });
   };
 
+  deleteService = (id) => {
+    const serviceRef = fire.database().ref('services').child(id);
+    serviceRef.remove();
+    this.getService();
+  };
+
   render() {
     return (
       <div className="content">
@@ -65,7 +71,7 @@ class AllService extends Component {
                               <td>{item.service_price}</td>
                               <td className="press">
                                 <Link to={{ pathname: "/admin/create-service", data : item }} class="btn btn-fill btn-primary">Edit</Link>
-                                <button type="button" class="btn btn-fill btn-danger pl-3">Delete</button>
+                                <a type="button" class="btn btn-fill btn-danger pl-3"  onClick={() => this.deleteService(item.id)}>Delete</a>
                               </td>
                             </tr>
                           )
