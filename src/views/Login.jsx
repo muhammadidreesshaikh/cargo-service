@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import fire from '../core/Firebase'
 
 import {
@@ -73,7 +74,7 @@ class Login extends Component {
 
                     <div className="col-12 col-md-12 col-lg-12">
                       <div className="password text-center">
-                        <a href="#">Forget Your Password?</a>
+                        <Link to="/admin/forget">Forget Your Password?</Link>
                       </div>
                     </div>
               
