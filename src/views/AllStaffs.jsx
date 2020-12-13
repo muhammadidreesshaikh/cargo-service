@@ -57,7 +57,7 @@ class AllStaffs extends Component {
                       <th>ID</th>
                        <th>Name</th>
                        <th>Email</th>
-                       <th>Contact</th>
+                       <th>Contact</th> 
                        <th>Status</th> 
                        <th>Actions</th>
                       </tr>

@@ -39,6 +39,7 @@ class RegisterTruck extends Component {
     this.getBooking();
   };
 
+
   render() {
     return (
       <div className="content">
