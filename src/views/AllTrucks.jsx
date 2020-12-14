@@ -29,13 +29,13 @@ class AllTrucks extends Component {
       for (let id in truck) {
         tempLtruck.push({ id, ...truck[id] });
       }
-      this.setState({ data: tempLtruck });
+      this.setState({ data: tempLtruck }); 
     });
   };
 
   deleteTruck = (id) => {
     const truckRef = fire.database().ref('trucks').child(id);
-    truckRef.remove();
+    truckRef.remove(); 
     this.getTruck();
   };
 

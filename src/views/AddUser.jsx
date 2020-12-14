@@ -158,21 +158,6 @@ class AddUser extends Component {
                       </div>
                     </div> */}
 
-                    <div className="col-12 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label>Cargo Company</label>
-                        <select name="cargo_company" class="form-control" value={this.state.cargo_company} onChange={(event) => this.handleChange(event)}>
-                          { 
-                            this.state.cargo && this.state.cargo.map((item, key) => {
-                              return(
-                                  <option key={key}>{item.cargo_company}</option>                            
-                              )
-                            })
-                          }
-                        </select>
-                      </div>
-                    </div>
-
                     <div className="col-12 col-12 col-md-6 col-lg-6">
                       <div class="form-group">
                         <label>User Type</label>
@@ -182,6 +167,21 @@ class AddUser extends Component {
                           <option value="agent">Agent</option>
                           <option value="transport">Transport</option>
                           <option value="collection">Collection</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="col-12 col-md-6 col-lg-6">
+                      <div class="form-group">
+                        <label>Cargo Company</label>
+                        <select name="cargo_company" class="form-control" value={this.state.cargo_company} onChange={(event) => this.handleChange(event)}>
+                          { 
+                            this.state.cargo && this.state.cargo.map((item, key) => {
+                              return(
+                                  <option key={key}>{item.name}</option>                            
+                              )
+                            })
+                          }
                         </select>
                       </div>
                     </div>

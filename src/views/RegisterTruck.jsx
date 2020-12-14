@@ -66,7 +66,7 @@ class RegisterTruck extends Component {
       } 
     });
 
-    this.props.history.push('/admin/all-trucks');
+    this.props.history.push('/admin/all-trucks'); 
 
     console.log(truck);
   };
