@@ -813,3 +813,20 @@ button.btn,a.btn:first-child{
     top: -4px;
   }
 }
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.block-margin-auto {
+  display: block;
+  margin: auto;
+}
+
+.login-form {
+  padding: 10% 0;
+}
+
+.d-block {
+  display: block;
+}

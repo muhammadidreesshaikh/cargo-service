@@ -22,7 +22,7 @@ class Login extends Component {
       email: '',
       password: ''
     }
-}
+  }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -31,58 +31,48 @@ class Login extends Component {
 
   submitLogin = () => {
     fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then(res => {
-      if (res.user.uid){
-        localStorage.setItem('user', JSON.stringify(res.user));
-        window.location.href = '/admin/dashboard';
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    })
+      .then(res => {
+        if (res.user.uid) {
+          localStorage.setItem('user', JSON.stringify(res.user));
+          window.location.href = '/admin/dashboard';
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   render() {
     return (
-      <div className="content">
+      <div className="content login-form">
         <Grid fluid>
           <Row>
-            <Col md={12}>
+            <Col md={4}></Col>
+            <Col md={4}>
               <Card
                 title="Login"
                 content={
                   <form>
-                    <div className="col-12 col-md-12 col-lg-12">
-                      <div class="form-group">
+                    <div className="form-row">
+                      <div className="form-group col-md-12 px-2">
                         <label>Email</label>
-                        <input type="email" name="email" class="form-control" value={this.state.email} onChange={(event) => this.handleChange(event)} placeholder="Email"/>
+                        <input type="email" name="email" className="form-control" value={this.state.email} onChange={(event) => this.handleChange(event)}></input>
                       </div>
-                    </div>
 
-                    <div className="col-12 col-md-12 col-lg-12">
-                      <div class="form-group">
+                      <div className="form-group col-md-12">
                         <label>Password</label>
-                        <input type="password" name="password"  className="form-control" value={this.state.password} onChange={(event) => this.handleChange(event)} placeholder="Password"/>
+                        <input type="password" name="password" className="form-control" value={this.state.password} onChange={(event) => this.handleChange(event)}></input>
                       </div>
                     </div>
 
-                    <div className="col-12 col-md-12 col-lg-12">
-                        <div className="text-center">
-                            <a onClick={() => this.submitLogin()} class="btn btn-fill btn-primary">Login</a>
-                        </div>
+                    <div className="form-row px-4 text-center">
+                      <a className="btn btn-success btn-fill mr-3" onClick={() => { this.login() }}>Login</a>
                     </div>
-
-                    <div className="col-12 col-md-12 col-lg-12">
-                      <div className="password text-center">
-                        <Link to="/admin/forget">Forget Your Password?</Link>
-                      </div>
-                    </div>
-              
-                    <div className="clearfix" />
                   </form>
                 }
               />
             </Col>
+            <Col md={4}></Col>
           </Row>
         </Grid>
       </div>
