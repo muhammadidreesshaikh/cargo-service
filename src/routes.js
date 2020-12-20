@@ -49,7 +49,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: false,
     path: "/add-user",
     name: "Add User Type",
     icon: "pe-7s-add-user",
@@ -65,7 +65,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: false,
     path: "/login",
     name: "Login",
     icon: "pe-7s-key",
@@ -73,7 +73,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: false,
     path: "/forget",
     name: "Forget",
     icon: "pe-7s-refresh",
@@ -125,7 +125,7 @@ const dashboardRoutes = [
   {
     display: true,
     path: "/create-truck-booking",
-    name: "Create Truck Booking",
+    name: "New Truck Booking",
     icon: "pe-7s-angle-right",
     component: CreateTruckBooking,
     layout: "/admin"
