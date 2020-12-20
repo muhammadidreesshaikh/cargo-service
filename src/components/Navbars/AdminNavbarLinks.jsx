@@ -1,7 +1,28 @@
 import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
+import fire from '../../core/Firebase.js';
 
 class AdminNavbarLinks extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      logout: '',
+    }
+  }
+
+  logout = () => {
+    fire.auth().signOut().then(res => {
+      console.log(res);
+      localStorage.clear();
+      window.location.href = '/admin/login';
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   render() {
     const notification = (
       <div>
@@ -20,7 +41,7 @@ class AdminNavbarLinks extends Component {
         </Nav>
 
         <Nav pullRight>
-          <NavItem eventKey={3} href="#">
+          <NavItem eventKey={3} onClick={this.logout}>
             Log out
           </NavItem>
         </Nav>
