@@ -18,7 +18,56 @@ import {
   legendBar
 } from "variables/Variables.jsx";
 
+import fire from '../core/Firebase.js';
+
 class Dashboard extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      cargos: 0,
+      transports: 0,
+      centres: 0,
+      pickups: 0,
+    }
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
+    let usersData = [];
+    let cargos = 0;
+    let transports = 0;
+    let centres = 0;
+    let pickups = 0;
+
+    const usersRef = fire.database().ref('users');
+    usersRef.on('value', (snapshot) => {
+      const users = Object.values(snapshot.val());
+
+      for (let id in users) {
+        usersData.push({ id, ...users[id] });
+      }
+      this.setState({ data: usersData });
+
+      this.state.data.forEach(element => {
+        if(element.user_type == 'cargo') cargos = cargos+1;
+        else if(element.user_type == 'transport') transports = transports+1;
+        else if(element.user_type == 'collection') centres = centres+1;
+      });
+
+      this.setState({
+        cargos: cargos,
+        transports: transports,
+        pickups: pickups,
+      })
+    });
+  };
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -29,6 +78,7 @@ class Dashboard extends Component {
     }
     return legend;
   }
+  
   render() {
     return (
       <div className="content">
@@ -37,41 +87,42 @@ class Dashboard extends Component {
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="Capacity"
-                statsValue="105GB"
+                statsText="Cargo's"
+                statsValue={this.state.cargos}
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Revenue"
-                statsValue="$1,345"
+                bigIcon={<i className="pe-7s-server text-success" />}
+                statsText="Transport's"
+                statsValue={this.state.transports}
                 statsIcon={<i className="fa fa-calendar-o" />}
                 statsIconText="Last day"
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
+                bigIcon={<i className="pe-7s-server text-danger" />}
+                statsText="Centres"
+                statsValue={this.state.centres}
                 statsIcon={<i className="fa fa-clock-o" />}
                 statsIconText="In the last hour"
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Followers"
-                statsValue="+45"
+                bigIcon={<i className="pe-7s-server text-info" />}
+                statsText="Pick Requests"
+                statsValue="45"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
             </Col>
           </Row>
-          <Row>
+          
+          {/* <Row>
             <Col md={8}>
               <Card
                 statsIcon="fa fa-history"
@@ -113,48 +164,7 @@ class Dashboard extends Component {
                 }
               />
             </Col>
-          </Row>
-
-          <Row>
-            <Col md={6}>
-              <Card
-                id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
-            </Col>
-
-            <Col md={6}>
-              <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
-                statsIcon="fa fa-history"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
-              />
-            </Col>
-          </Row>
+          </Row> */}
         </Grid>
       </div>
     );
