@@ -54,7 +54,7 @@ class Login extends Component {
                 content={
                   <form>
                     <div className="form-row">
-                      <div className="form-group col-md-12 px-2">
+                      <div className="form-group col-md-12">
                         <label>Email</label>
                         <input type="email" name="email" className="form-control" value={this.state.email} onChange={(event) => this.handleChange(event)}></input>
                       </div>
@@ -66,7 +66,7 @@ class Login extends Component {
                     </div>
 
                     <div className="form-row px-4 text-center">
-                      <a className="btn btn-success btn-fill mr-3" onClick={() => { this.login() }}>Login</a>
+                      <a className="btn btn-success btn-fill mr-3" onClick={() => { this.submitLogin() }}>Login</a>
                     </div>
                   </form>
                 }

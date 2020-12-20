@@ -830,3 +830,7 @@ button.btn,a.btn:first-child{
 .d-block {
   display: block;
 }
+
+.card form [class*="col-"]:first-child, .card form [class*="col-"]:last-child {
+  padding-left: 0 !important;
+}
