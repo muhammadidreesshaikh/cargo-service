@@ -35,6 +35,7 @@ let profile = JSON.parse(localStorage.getItem('profile'));
 let user_type = 'all';
 
 if(profile == null || profile == undefined) {
+  user_type = 'all';
   console.log('null or undefined');
 } 
 else {
@@ -77,7 +78,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == '' ? true : false,
+    display: false,
     path: "/login",
     name: "Login",
     icon: "pe-7s-key",
@@ -85,7 +86,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == '' ? true : false,
+    display: false,
     path: "/forget",
     name: "Forget",
     icon: "pe-7s-refresh",
@@ -95,7 +96,7 @@ const dashboardRoutes = [
 
   // all cargo
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/all-cargo",
     name: "All Cargo",
     icon: "pe-7s-right-arrow",
@@ -103,7 +104,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/all-pickup-request",
     name: "All Pickup Request",
     icon: "pe-7s-angle-right",
@@ -119,7 +120,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/add-supervisor",
     name: "Add Supervisor",
     icon: "pe-7s-angle-right",
@@ -127,7 +128,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/all-supervisor",
     name: "All Supervisor",
     icon: "pe-7s-angle-right",
@@ -135,7 +136,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/create-truck-booking",
     name: "New Truck Booking",
     icon: "pe-7s-angle-right",
@@ -143,7 +144,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/all-service",
     name: "All Service",
     icon: "pe-7s-angle-right",
@@ -151,7 +152,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/create-service",
     name: "Create Service",
     icon: "pe-7s-angle-right",
@@ -162,7 +163,7 @@ const dashboardRoutes = [
 
   // all center
   {
-    display: user_type == 'collection' ? true : false,
+    display: user_type == 'collection' || user_type == 'admin' ? true : false,
     path: "/all-center",
     name: "All Center",
     icon: "pe-7s-right-arrow",
@@ -170,7 +171,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'collection' ? true : false,
+    display: user_type == 'collection' || user_type == 'admin' ? true : false,
     path: "/add-staff",
     name: "Add Staff",
     icon: "pe-7s-angle-right",
@@ -178,7 +179,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'collection' ? true : false,
+    display: user_type == 'collection' || user_type == 'admin' ? true : false,
     path: "/all-staffs",
     name: "All Staffs",
     icon: "pe-7s-angle-right",
@@ -188,7 +189,7 @@ const dashboardRoutes = [
 
   // all-transport
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/all-transport",
     name: "All Transport",
     icon: "pe-7s-right-arrow",
@@ -196,7 +197,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/register-truck",
     name: "Register Truck",
     icon: "pe-7s-angle-right",
@@ -204,7 +205,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/all-trucks",
     name: "All Trucks",
     icon: "pe-7s-angle-right",
@@ -212,7 +213,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/booking-truck",
     name: "Booking Truck",
     icon: "pe-7s-angle-right",
@@ -220,7 +221,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/register-truck-staff ",
     name: "Register Truck Staff ",
     icon: "pe-7s-angle-right",
@@ -228,7 +229,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/all-truck-staff",
     name: "All Truck Staff",
     icon: "pe-7s-angle-right",
@@ -236,7 +237,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/create-trip",
     name: "Create Trip",
     icon: "pe-7s-angle-right",
@@ -244,7 +245,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/manage-trips",
     name: "Manage Trips",
     icon: "pe-7s-angle-right",
@@ -252,7 +253,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'transport' ? true : false,
+    display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/all-agents",
     name: "All Agents",
     icon: "pe-7s-right-arrow",
