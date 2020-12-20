@@ -71,10 +71,22 @@ class AddUser extends Component {
       } 
     });
 
+    this.signupForCustomer(this.state.email, this.state.password);
     this.props.history.push('/admin/user-type-list');
-
-    console.log(user);
   };
+
+  // creating default account for customer
+  signupForCustomer = (email, password) => {
+    fire.auth().createUserWithEmailAndPassword(email, password)
+    .then(res => {
+        console.log(res);
+        if (res.additionalUserInfo.isNewUser == true) alert('Signup Successfull.');
+        else alert('Signup Failed!');
+    })
+    .catch(error => {
+        console.log(error);
+    })
+  }
 
   updateLoad = () => {
     fire.database().ref('users/' + this.state.data.id).set({
@@ -118,6 +130,15 @@ class AddUser extends Component {
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
+
+    if(event.target.name == 'user_type') {
+      if(event.target.value == 'collection') {
+        this.setState({ no_cargo: true })
+      }
+      else {
+        this.setState({ no_cargo: false })
+      }
+    }
   }
 
   render() {
@@ -162,6 +183,7 @@ class AddUser extends Component {
                       <div class="form-group">
                         <label>User Type</label>
                         <select name="user_type" class="form-control" value={this.state.user_type} onChange={(event) => this.handleChange(event)}>
+                          <option value="0">Select User Type</option>
                           <option value="cargo">Cargo</option>
                           <option value="customer">Customer</option>
                           <option value="agent">Agent</option>
@@ -171,21 +193,27 @@ class AddUser extends Component {
                       </div>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label>Cargo Company</label>
-                        <select name="cargo_company" class="form-control" value={this.state.cargo_company} onChange={(event) => this.handleChange(event)}>
-                          { 
-                            this.state.cargo && this.state.cargo.map((item, key) => {
-                              return(
+                    {
+                      this.state.no_cargo ?
+                      <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                          <label>Cargo Company</label>
+                          <select name="cargo_company" class="form-control" value={this.state.cargo_company} onChange={(event) => this.handleChange(event)}>
+                            <option value="0">Select Cargo Company</option>
+                            {
+                              this.state.cargo && this.state.cargo.map((item, key) => {
+                                return(
                                   <option key={key}>{item.name}</option>                            
-                              )
-                            })
-                          }
-                        </select>
+                                )
+                              })
+                            }
+                          </select>
+                        </div>
                       </div>
-                    </div>
-
+                      :
+                      null
+                    }
+                    
                     <div className="col-12 col-12 col-md-6 col-lg-6">
                       <div class="form-group">
                         <label>Contact</label>
@@ -203,6 +231,7 @@ class AddUser extends Component {
                       <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
+                          <option value="0">Select Status</option>
                           <option value="approve">Approve</option>
                           <option value="block">Block</option>
                           <option value="unblock">UnBlock</option>

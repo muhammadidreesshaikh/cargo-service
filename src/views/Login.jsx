@@ -19,6 +19,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
+      profile: '',
       email: '',
       password: ''
     }
@@ -34,7 +35,14 @@ class Login extends Component {
       .then(res => {
         if (res.user.uid) {
           localStorage.setItem('user', JSON.stringify(res.user));
-          window.location.href = '/admin/dashboard';
+
+          const userRef = fire.database().ref('users');
+
+          userRef.orderByChild("email").equalTo(res.user.email).on("child_added", (snap) => {
+            this.setState({ profile: snap.val() });
+            localStorage.setItem('profile', JSON.stringify(this.state.profile));
+            window.location.href = '/admin/dashboard';
+          });
         }
       })
       .catch(error => {

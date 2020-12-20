@@ -157,24 +157,14 @@ class CreateTrip extends Component {
                         <div className="col-12 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Route From</label>
-                                <select name="route_from" class="form-control" value={this.state.route_from} onChange={(event) => this.handleChange(event)}>
-                                    <option>Karachi</option>
-                                    <option>Lahore</option>
-                                    <option>Multan</option>
-                                    <option>Punjab</option>
-                                </select>
+                                <input name="route_from" type="text" class="form-control" placeholder="Route From" value={this.state.route_from} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Route To</label>
-                                <select name="route_to" class="form-control" value={this.state.route_to} onChange={(event) => this.handleChange(event)}>
-                                    <option>Multan</option>
-                                    <option>Punjab</option>
-                                    <option>Karachi</option>
-                                    <option>Lahore</option>
-                                </select>
+                                <input name="route_to" type="text" class="form-control" placeholder="Route To" value={this.state.route_to} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
 

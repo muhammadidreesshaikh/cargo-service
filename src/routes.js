@@ -31,9 +31,21 @@ import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import { GroundOverlay } from "react-google-maps";
 
+let profile = JSON.parse(localStorage.getItem('profile'));
+let user_type = 'all';
+
+if(profile == null || profile == undefined) {
+  console.log('null or undefined');
+} 
+else {
+  user_type = profile.user_type;
+  console.log(profile.user_type);
+}
+
+
 const dashboardRoutes = [
   {
-    display: true,
+    display: user_type == 'admin' ? true : false,
     path: "/dashboard",
     name: "Dashboard",
     icon: "pe-7s-graph",
@@ -41,7 +53,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'admin' ? true : false,
     path: "/user",
     name: "User Profile",
     icon: "pe-7s-user",
@@ -49,7 +61,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: false,
+    display: user_type == 'admin' ? true : false,
     path: "/add-user",
     name: "Add User Type",
     icon: "pe-7s-add-user",
@@ -57,7 +69,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'admin' ? true : false,
     path: "/user-type-list",
     name: "User Type List",
     icon: "pe-7s-note2",
@@ -65,7 +77,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: false,
+    display: user_type == '' ? true : false,
     path: "/login",
     name: "Login",
     icon: "pe-7s-key",
@@ -73,7 +85,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: false,
+    display: user_type == '' ? true : false,
     path: "/forget",
     name: "Forget",
     icon: "pe-7s-refresh",
@@ -83,7 +95,7 @@ const dashboardRoutes = [
 
   // all cargo
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/all-cargo",
     name: "All Cargo",
     icon: "pe-7s-right-arrow",
@@ -91,7 +103,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/all-pickup-request",
     name: "All Pickup Request",
     icon: "pe-7s-angle-right",
@@ -107,7 +119,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/add-supervisor",
     name: "Add Supervisor",
     icon: "pe-7s-angle-right",
@@ -115,7 +127,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/all-supervisor",
     name: "All Supervisor",
     icon: "pe-7s-angle-right",
@@ -123,7 +135,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/create-truck-booking",
     name: "New Truck Booking",
     icon: "pe-7s-angle-right",
@@ -131,7 +143,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/all-service",
     name: "All Service",
     icon: "pe-7s-angle-right",
@@ -139,7 +151,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'cargo' ? true : false,
     path: "/create-service",
     name: "Create Service",
     icon: "pe-7s-angle-right",
@@ -150,7 +162,7 @@ const dashboardRoutes = [
 
   // all center
   {
-    display: true,
+    display: user_type == 'collection' ? true : false,
     path: "/all-center",
     name: "All Center",
     icon: "pe-7s-right-arrow",
@@ -158,7 +170,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'collection' ? true : false,
     path: "/add-staff",
     name: "Add Staff",
     icon: "pe-7s-angle-right",
@@ -166,7 +178,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'collection' ? true : false,
     path: "/all-staffs",
     name: "All Staffs",
     icon: "pe-7s-angle-right",
@@ -176,7 +188,7 @@ const dashboardRoutes = [
 
   // all-transport
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/all-transport",
     name: "All Transport",
     icon: "pe-7s-right-arrow",
@@ -184,7 +196,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/register-truck",
     name: "Register Truck",
     icon: "pe-7s-angle-right",
@@ -192,7 +204,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/all-trucks",
     name: "All Trucks",
     icon: "pe-7s-angle-right",
@@ -200,7 +212,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/booking-truck",
     name: "Booking Truck",
     icon: "pe-7s-angle-right",
@@ -208,7 +220,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/register-truck-staff ",
     name: "Register Truck Staff ",
     icon: "pe-7s-angle-right",
@@ -216,7 +228,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/all-truck-staff",
     name: "All Truck Staff",
     icon: "pe-7s-angle-right",
@@ -224,7 +236,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/create-trip",
     name: "Create Trip",
     icon: "pe-7s-angle-right",
@@ -232,7 +244,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/manage-trips",
     name: "Manage Trips",
     icon: "pe-7s-angle-right",
@@ -240,7 +252,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: user_type == 'transport' ? true : false,
     path: "/all-agents",
     name: "All Agents",
     icon: "pe-7s-right-arrow",
@@ -248,7 +260,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: false,
     path: "/sample",
     name: "Sample",
     icon: "pe-7s-right-arrow",
@@ -256,7 +268,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: true,
+    display: false,
     path: "/icons",
     name: "Icons",
     icon: "pe-7s-science",
