@@ -92,7 +92,7 @@ class AddUser extends Component {
     fire.database().ref('users/' + this.state.data.id).set({
       name: this.state.name,
       email: this.state.email,
-      password: this.state.password,
+      // password: this.state.password,
       // commission_percentage: this.state.commission_percentage,
       cargo_company: this.state.cargo_company,
       user_type: this.state.user_type,
@@ -165,12 +165,18 @@ class AddUser extends Component {
                       </div>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label>Password</label>
-                        <input name="password" type="password" class="form-control" placeholder="Password" value={this.state.password} onChange={(event) => this.handleChange(event)}/>
+                    {
+                      this.state.data ?
+                      null
+                      :
+                      <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                          <label>Password</label>
+                          <input name="password" type="password" class="form-control" placeholder="Password" value={this.state.password} onChange={(event) => this.handleChange(event)}/>
+                        </div>
                       </div>
-                    </div>
+                    }
+                    
 
                     {/* <div className="col-12 col-md-6 col-lg-6">
                       <div class="form-group">

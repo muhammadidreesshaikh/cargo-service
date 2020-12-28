@@ -70,7 +70,7 @@ class RegisterTruck extends Component {
                             this.state.data.map((item, key) => {
                               return(
                                   <tr key={key}>
-                                  <td>{item.select_truck}</td>
+                                  <td>{item.number_plate}</td>
                                   <td>{item.capacity}</td>
                                   <td>{item.date_from}</td>
                                   <td>{item.route_from}</td>
