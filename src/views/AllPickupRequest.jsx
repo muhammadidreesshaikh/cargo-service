@@ -65,7 +65,7 @@ class AllPickupRequest extends Component {
                        <th>Actions</th>
                       </tr>
                     </thead>
-
+ 
                     <tbody>
                       { 
                         this.state.data.map((item, key) => {

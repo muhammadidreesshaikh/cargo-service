@@ -54,7 +54,7 @@ class AddUser extends Component {
     const user = {
       name: this.state.name,
       email: this.state.email,
-      password: this.state.password,
+      // password: this.state.password,
       // commission_percentage: this.state.commission_percentage,
       cargo_company: this.state.cargo_company,
       user_type: this.state.user_type,

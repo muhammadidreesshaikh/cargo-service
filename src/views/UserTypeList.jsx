@@ -56,7 +56,7 @@ class UserTypeList extends Component {
                       <tr>
                        <th>Name</th>
                        <th>Email</th>
-                       <th>Password</th>
+                       {/* <th>Password</th> */}
                        {/* <th>Commission Percentage</th> */}
                        <th>Cargo Company</th>
                        <th>User Type</th>
@@ -74,7 +74,7 @@ class UserTypeList extends Component {
                             <tr key={key}>
                               <td>{item.name}</td>
                               <td>{item.email}</td>
-                              <td>{item.password}</td>
+                              {/* <td>{item.password}</td> */}
                               {/* <td>{item.commission_percentage}</td> */}
                               <td>{item.cargo_company}</td>
                               <td>{item.user_type}</td>

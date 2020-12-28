@@ -27,7 +27,6 @@ class AddStaff extends Component {
 
   componentDidMount() {
 
-
     if(this.state.data) {
       this.setState({
         name: this.state.data.name,

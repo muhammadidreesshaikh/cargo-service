@@ -39,6 +39,7 @@ class PickupDetails extends Component {
 
     componentDidMount() {
         this.getCargoCompany();
+        this.getStaff();
     
         if(this.state.data) {
           this.setState({
@@ -137,17 +138,17 @@ class PickupDetails extends Component {
         });
     }; 
 
-    getTruck = () => {
-        let tempLtruck = [];
-        const truckRef = fire.database().ref('truck-staff');
+    getStaff = () => {
+        let tempLstaff = [];
+        const staffRef = fire.database().ref('truck-staff');
     
-        truckRef.on('value', (snapshot) => {
-          const truck = snapshot.val();
+        staffRef.on('value', (snapshot) => {
+          const staff = snapshot.val();
     
-          for (let id in truck) {
-            tempLtruck.push({ id, ...truck[id] });
+          for (let id in staff) {
+            tempLstaff.push({ id, ...staff[id] });
           }
-          this.setState({ assign: tempLtruck });
+          this.setState({ assign: tempLstaff });
         });
     
         console.log(this.state.assign);
@@ -166,7 +167,7 @@ class PickupDetails extends Component {
             <Col md={12}>
               <Card
                 title="Pickup Details"
-                content={
+                content={ 
                     <form>
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
