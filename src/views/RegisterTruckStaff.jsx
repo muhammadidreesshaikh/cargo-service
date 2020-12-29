@@ -41,7 +41,7 @@ class RegisterTruckStaff extends Component {
   }
 
   createTruckStaff = () => {
-    const truckStaffsRef = fire.database().ref('truck-staff');
+    const truckStaffsRef = fire.database().ref('users');
   
     const truckStaffs = {
       name: this.state.name,

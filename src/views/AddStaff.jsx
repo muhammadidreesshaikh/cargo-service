@@ -40,7 +40,7 @@ class AddStaff extends Component {
   }
 
   createStaff = () => {
-    const staffRef = fire.database().ref('staffs');
+    const staffRef = fire.database().ref('users');
   
     const staff = {
       name: this.state.name,
@@ -48,6 +48,7 @@ class AddStaff extends Component {
       // password: this.state.password,
       contact: this.state.contact,
       status: this.state.status,
+      user_type: 'collection-staff'
     };
 
     staffRef.push(staff, function(error) {
@@ -73,7 +74,7 @@ class AddStaff extends Component {
         else alert('Signup Failed!');
     })
     .catch(error => {
-        console.log(error);
+        console.log(error); 
     })
   }
 

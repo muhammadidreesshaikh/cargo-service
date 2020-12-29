@@ -21,7 +21,7 @@ class AllStaffs extends Component {
 
   getStaff = () => {
     let tempLstaff = [];
-    const staffRef = fire.database().ref('staffs');
+    const staffRef = fire.database().ref('users');
 
     staffRef.on('value', (snapshot) => {
       const staff = snapshot.val();
@@ -29,7 +29,10 @@ class AllStaffs extends Component {
       for (let id in staff) {
         tempLstaff.push({ id, ...staff[id] });
       }
-      this.setState({ data: tempLstaff });
+
+      let filtered = tempLstaff.filter(item => item.user_type == 'collection-staff');
+
+      this.setState({ data: filtered });
     });
   };
 

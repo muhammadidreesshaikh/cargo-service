@@ -21,7 +21,7 @@ class AllTruckStaff extends Component {
 
   getTruckStaff = () => {
     let tempLtruckStaff = [];
-    const truckStaffRef = fire.database().ref('truck-staff');
+    const truckStaffRef = fire.database().ref('users');
 
     truckStaffRef.on('value', (snapshot) => {
       const truckStaff = snapshot.val();
@@ -29,7 +29,10 @@ class AllTruckStaff extends Component {
       for (let id in truckStaff) {
         tempLtruckStaff.push({ id, ...truckStaff[id] });
       }
-      this.setState({ data: tempLtruckStaff });
+
+      let filtered = tempLtruckStaff.filter(item => item.user_type == 'truck-staff');
+
+      this.setState({ data: filtered });
     });
   };
 
