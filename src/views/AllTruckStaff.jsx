@@ -55,6 +55,7 @@ class AllTruckStaff extends Component {
                     <thead>
                       <tr>
                        <th>Name</th>
+                       <th>Email</th>
                        <th>ID Card</th>
                        <th>Driving License</th>
                        <th>Contact</th>
@@ -69,6 +70,7 @@ class AllTruckStaff extends Component {
                           return(
                             <tr key={key}>
                               <td>{item.name}</td>
+                              <td>{item.email}</td>
                               <td>{item.id_card}</td>
                               <td>{item.driving_license}</td>
                               <td>{item.contact}</td>

@@ -16,6 +16,8 @@ class RegisterTruckStaff extends Component {
     this.state = {
       data: this.props.location.data,
       name: '',
+      email: '',
+      password: '',
       id_card: '',
       driving_license: '',
       contact: '',
@@ -28,6 +30,8 @@ class RegisterTruckStaff extends Component {
     if(this.state.data) {
       this.setState({
         name: this.state.data.name,
+        email: this.state.data.email,
+        password: this.state.data.password,
         id_card: this.state.data.id_card,
         driving_license: this.state.data.driving_license,
         contact: this.state.data.contact,
@@ -41,10 +45,13 @@ class RegisterTruckStaff extends Component {
   
     const truckStaffs = {
       name: this.state.name,
+      email: this.state.email,
+      // password: this.state.password,
       id_card: this.state.id_card,
       driving_license: this.state.driving_license,
       contact: this.state.contact,
-      status: this.state.status
+      status: this.state.status,
+      user_type: 'truck-staff'
     };
 
     truckStaffsRef.push(truckStaffs, function(error) {
@@ -55,10 +62,24 @@ class RegisterTruckStaff extends Component {
       } 
     });
 
+    this.signupForCustomer(this.state.email, this.state.password);
     this.props.history.push('/admin/all-truck-staff');
 
     console.log(truckStaffs);
   };
+
+  // creating default account for customer
+  signupForCustomer = (email, password) => {
+    fire.auth().createUserWithEmailAndPassword(email, password)
+    .then(res => {
+        console.log(res);
+        if (res.additionalUserInfo.isNewUser == true) alert('Signup Successfull.');
+        else alert('Signup Failed!');
+    })
+    .catch(error => {
+        console.log(error);
+    })
+  }
 
   updateLoad = () => {
     fire.database().ref('truck-staff/' + this.state.data.id).set({
@@ -99,6 +120,25 @@ class RegisterTruckStaff extends Component {
                                 <input name="name" type="name" class="form-control" placeholder="Name" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div>
+
+                        <div className="col-12 col-md-6 col-lg-6">
+                          <div class="form-group">
+                            <label>Email</label>
+                            <input name="email" type="email" class="form-control" placeholder="Email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
+                          </div>
+                        </div>
+
+                        {
+                          this.state.data ?
+                          null
+                          :
+                          <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label>Password</label>
+                              <input name="password" type="text" class="form-control" placeholder="Password" value={this.state.password} onChange={(event) => this.handleChange(event)}/>
+                            </div>
+                          </div>
+                        }
 
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
