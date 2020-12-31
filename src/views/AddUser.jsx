@@ -130,7 +130,7 @@ class AddUser extends Component {
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
     console.log(this.state);
-
+ 
     if(event.target.name == 'user_type') {
       if(event.target.value == 'collection') {
         this.setState({ no_cargo: true })
