@@ -63,6 +63,7 @@ class Dashboard extends Component {
       this.setState({
         cargos: cargos,
         transports: transports,
+        centres: centres,
         pickups: pickups,
       })
     });
@@ -111,7 +112,7 @@ class Dashboard extends Component {
                 statsIconText="In the last hour"
               />
             </Col>
-            <Col lg={3} sm={6}>
+            {/* <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-info" />}
                 statsText="Pick Requests"
@@ -119,7 +120,7 @@ class Dashboard extends Component {
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
-            </Col>
+            </Col> */}
           </Row>
           
           {/* <Row>
