@@ -79,11 +79,13 @@ class AddStaff extends Component {
   }
 
   updateLoad = () => {
-    fire.database().ref('staffs/' + this.state.data.id).set({
+    fire.database().ref('users/' + this.state.data.id).set({
       name: this.state.name,
       email: this.state.email,
+      // password: this.state.password,
       contact: this.state.contact,
-      status: this.state.status
+      status: this.state.status,
+      user_type: 'collection-staff'
       }, function(error) {
         if (error) {
             alert("Staffs Updation Failed.");

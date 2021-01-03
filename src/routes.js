@@ -11,7 +11,7 @@ import AddSupervisor from "views/AddSupervisor.jsx";
 import AllSupervisor from "views/AllSupervisor.jsx";
 import RegisterTruck from "views/RegisterTruck.jsx";
 import AllTrucks from "views/AllTrucks.jsx";
-import RegisterTruckStaff from "views/RegisterTruckStaff.jsx";
+import RegisterTruckStaff from "views/Sample.jsx";
 import AllTruckStaff from "views/AllTruckStaff.jsx";
 import BookingTruck from "views/BookingTruck.jsx";
 import CreateTrip from "views/CreateTrip.jsx";
