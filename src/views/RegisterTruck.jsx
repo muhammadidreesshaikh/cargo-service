@@ -30,7 +30,7 @@ class RegisterTruck extends Component {
   }
 
   componentDidMount() {
-    this.getTruck();
+    this.getStaff();
 
     if(this.state.data) {
       this.setState({
@@ -91,20 +91,21 @@ class RegisterTruck extends Component {
       this.props.history.push('/admin/all-trucks');
   };
 
-  getTruck = () => {
-    let tempLtruck = [];
-    const truckRef = fire.database().ref('truck-staff');
+  getStaff = () => {
+    let tempLuser = [];
+    const userRef = fire.database().ref('users');
 
-    truckRef.on('value', (snapshot) => {
-      const truck = snapshot.val();
+    userRef.on('value', (snapshot) => {
+        const user = snapshot.val();
 
-      for (let id in truck) {
-        tempLtruck.push({ id, ...truck[id] });
-      }
-      this.setState({ assign: tempLtruck });
+        for (let id in user) {
+            tempLuser.push({ id, ...user[id] });
+        }
+        
+        let filtered = tempLuser.filter(item => item.user_type == 'truck-staff');
+
+        this.setState({ assign: filtered });
     });
-
-    console.log(this.state.assign);
   };
 
   handleChange = (event) => {
