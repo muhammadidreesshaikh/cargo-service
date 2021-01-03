@@ -20,6 +20,7 @@ class AddSupervisor extends Component {
       data: this.props.location.data,
       name: '',
       email: '',
+      password: '',
       contact: '',
       status: '',
     }
@@ -31,6 +32,7 @@ class AddSupervisor extends Component {
       this.setState({
         name: this.state.data.name,
         email: this.state.data.email,
+        password: this.state.data.password,
         contact: this.state.data.contact,
         status: this.state.data.status,
       })
@@ -38,13 +40,15 @@ class AddSupervisor extends Component {
   }
 
   createAddSupervisor = () => {
-    const addSupervisorRef = fire.database().ref('supervisors');
+    const addSupervisorRef = fire.database().ref('users');
   
     const addSupervisor = {
       name: this.state.name,
       email: this.state.email,
+      // password: this.state.password,
       contact: this.state.contact,
       status: this.state.status,
+      user_type: 'supervisor'
     };
 
     addSupervisorRef.push(addSupervisor, function(error) {
@@ -55,17 +59,33 @@ class AddSupervisor extends Component {
       }
     });
 
+    this.signupForCustomer(this.state.email, this.state.password);
     this.props.history.push('/admin/all-supervisor');
 
     console.log(addSupervisor);
   };
 
+  // creating default account for customer
+  signupForCustomer = (email, password) => {
+    fire.auth().createUserWithEmailAndPassword(email, password)
+    .then(res => {
+        console.log(res);
+        if (res.additionalUserInfo.isNewUser == true) alert('Signup Successfull.');
+        else alert('Signup Failed!');
+    })
+    .catch(error => {
+        console.log(error); 
+    })
+  }
+
   updateLoad = () => {
-    fire.database().ref('supervisors/' + this.state.data.id).set({
+    fire.database().ref('users/' + this.state.data.id).set({
       name: this.state.name,
       email: this.state.email,
+      // password: this.state.password,
       contact: this.state.contact,
-      status: this.state.status
+      status: this.state.status,
+      user_type: 'supervisor'
       }, function(error) {
         if (error) {
             alert("Supervisor Updation Failed.");
@@ -105,6 +125,25 @@ class AddSupervisor extends Component {
                                 <input name="email" type="email" class="form-control" placeholder="Email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
                             </div>
                         </div> 
+
+                        {
+                          this.state.data ?
+                          null
+                          :
+                          <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <label>Password</label>
+                              <input name="password" type="text" class="form-control" placeholder="Password" value={this.state.password} onChange={(event) => this.handleChange(event)}/>
+                            </div>
+                          </div>
+                        }
+
+                        {/* <div className="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input name="password" type="password" class="form-control" placeholder="password" value={this.state.password} onChange={(event) => this.handleChange(event)}/>
+                            </div>
+                        </div>  */}
  
                         <div className="col-12 col-md-6 col-lg-6">
                             <div class="form-group">

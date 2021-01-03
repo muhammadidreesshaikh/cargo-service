@@ -21,7 +21,7 @@ class AddSupervisor extends Component {
 
   getSupervisor = () => {
     let tempLsupervisor = [];
-    const supervisorRef = fire.database().ref('supervisors');
+    const supervisorRef = fire.database().ref('users');
 
     supervisorRef.on('value', (snapshot) => {
       const supervisor = snapshot.val();
@@ -29,7 +29,10 @@ class AddSupervisor extends Component {
       for (let id in supervisor) {
         tempLsupervisor.push({ id, ...supervisor[id] });
       }
-      this.setState({ data: tempLsupervisor });
+
+      let filtered = tempLsupervisor.filter(item => item.user_type == 'supervisor');
+
+      this.setState({ data: filtered });
     });
   };
 
