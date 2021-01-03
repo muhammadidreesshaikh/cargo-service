@@ -104,7 +104,8 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' || user_type == 'admin' || user_type == 'truck-staff' || user_type == 'collection-staff'  ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' || 
+    user_type == 'truck-staff' || user_type == 'collection-staff' || user_type == 'supervisor'  ? true : false,
     path: "/all-pickup-request",
     name: "All Pickup Request",
     icon: "pe-7s-angle-right",
