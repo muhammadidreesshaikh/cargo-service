@@ -37,7 +37,7 @@ class AllStaffs extends Component {
   };
 
   deleteStaff = (id) => {
-    const staffRef = fire.database().ref('staffs').child(id);
+    const staffRef = fire.database().ref('users').child(id);
     staffRef.remove();
     this.getStaff();
   };
