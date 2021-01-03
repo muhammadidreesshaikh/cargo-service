@@ -20,6 +20,7 @@ class PickupDetails extends Component {
             data: this.props.location.data,
             cargo: '',
             assign: '',
+            collection: '',
             date: '',
             cargo_company: '',
             to: '',
@@ -40,6 +41,7 @@ class PickupDetails extends Component {
     componentDidMount() {
         this.getCargoCompany();
         this.getStaff();
+        this.getCollectionCentre();
     
         if(this.state.data) {
           this.setState({
@@ -139,19 +141,37 @@ class PickupDetails extends Component {
     }; 
 
     getStaff = () => {
-        let tempLstaff = [];
-        const staffRef = fire.database().ref('truck-staff');
-    
-        staffRef.on('value', (snapshot) => {
-          const staff = snapshot.val();
-    
-          for (let id in staff) {
-            tempLstaff.push({ id, ...staff[id] });
-          }
-          this.setState({ assign: tempLstaff });
+        let tempLuser = [];
+        const userRef = fire.database().ref('users');
+
+        userRef.on('value', (snapshot) => {
+            const user = snapshot.val();
+
+            for (let id in user) {
+                tempLuser.push({ id, ...user[id] });
+            }
+            
+            let filtered = tempLuser.filter(item => item.user_type == 'truck-staff');
+
+            this.setState({ assign: filtered });
         });
-    
-        console.log(this.state.assign);
+    };
+
+    getCollectionCentre = () => {
+        let tempLuser = [];
+        const userRef = fire.database().ref('users');
+
+        userRef.on('value', (snapshot) => {
+            const user = snapshot.val();
+
+            for (let id in user) {
+                tempLuser.push({ id, ...user[id] });
+            }
+            
+            let filtered = tempLuser.filter(item => item.user_type == 'collection');
+
+            this.setState({ collection: filtered });
+        });
     };
 
     handleChange = (event) => {
@@ -237,10 +257,13 @@ class PickupDetails extends Component {
                             <div class="form-group">
                                 <label>Assign Center</label>
                                 <select name="assign_center" class="form-control" value={this.state.assign_center} onChange={(event) => this.handleChange(event)}>
-                                    <option>Center 1</option>
-                                    <option>Center 2</option>
-                                    <option>Center 3</option>
-                                    <option>Center 4</option>
+                                    { 
+                                        this.state.collection && this.state.collection.map((item, key) => {
+                                        return(
+                                            <option key={key}>{item.name}</option>                            
+                                            )
+                                        })
+                                    }
                                 </select>
                             </div>
                         </div>
