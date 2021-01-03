@@ -99,12 +99,12 @@ const dashboardRoutes = [
     display: user_type == 'cargo' || user_type == 'admin' ? true : false,
     path: "/all-cargo",
     name: "All Cargo",
-    icon: "pe-7s-right-arrow",
+    icon: "pe-7s-box2",
     component: AllCargo,
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' || user_type == 'truck-staff' || user_type == 'collection-staff'  ? true : false,
     path: "/all-pickup-request",
     name: "All Pickup Request",
     icon: "pe-7s-angle-right",
@@ -166,7 +166,7 @@ const dashboardRoutes = [
     display: user_type == 'collection' || user_type == 'admin' ? true : false,
     path: "/all-center",
     name: "All Center",
-    icon: "pe-7s-right-arrow",
+    icon: "pe-7s-network",
     component: AllCenter,
     layout: "/admin"
   },
@@ -192,7 +192,7 @@ const dashboardRoutes = [
     display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/all-transport",
     name: "All Transport",
-    icon: "pe-7s-right-arrow",
+    icon: "pe-7s-car",
     component: AllTransport,
     layout: "/admin"
   },
@@ -256,7 +256,7 @@ const dashboardRoutes = [
     display: user_type == 'transport' || user_type == 'admin' ? true : false,
     path: "/all-agents",
     name: "All Agents",
-    icon: "pe-7s-right-arrow",
+    icon: "pe-7s-users",
     component: AllAgents,
     layout: "/admin"
   },
