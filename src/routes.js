@@ -54,7 +54,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'admin' ? true : false,
+    display: true,
     path: "/user",
     name: "User Profile",
     icon: "pe-7s-user",

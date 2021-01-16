@@ -9,13 +9,46 @@ import {
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/faces/face-3.jpg";
 
 class UserProfile extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      email: '',
+      cargo_company: '',
+      user_type: '',
+      contact: '',
+      status: '',
+    }
+  }
+
+  componentDidMount() {
+    this.getProfile();
+
+  }
+
+  getProfile = () => {
+    const status = JSON.parse(localStorage.getItem('profile'));
+
+    this.setState({
+      name: status.name,
+      email: status.email,
+      cargo_company: status.cargo_company,
+      user_type: status.user_type,
+      contact: status.contact,
+      status: status.status,
+    })
+  };
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
+  }
+
+
   render() {
     return (
       <div className="content">
@@ -26,148 +59,57 @@ class UserProfile extends Component {
                 title="Edit Profile"
                 content={
                   <form>
-                    <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
-                      properties={[
-                        // {
-                        //   label: "Company (disabled)",
-                        //   type: "text",
-                        //   bsClass: "form-control",
-                        //   placeholder: "Company",
-                        //   defaultValue: "Creative Code Inc.",
-                        //   disabled: true
-                        // },
-                        {
-                          label: "Username",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Username",
-                          defaultValue: "michael23"
-                        },
-                        {
-                          label: "Email address",
-                          type: "email",
-                          bsClass: "form-control",
-                          placeholder: "Email"
-                        },
-                        {
-                          label: "Password",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Password"
-                        },
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-6", "col-md-6"]}
-                      properties={[
-                        {
-                          label: "First name",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "First name",
-                          defaultValue: "Mike"
-                        },
-                        {
-                          label: "Last name",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Last name",
-                          defaultValue: "Andrew"
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-12"]}
-                      properties={[
-                        {
-                          label: "Adress",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Home Adress",
-                          defaultValue:
-                            "Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
-                      properties={[
-                        {
-                          label: "City",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "City",
-                          defaultValue: "Mike"
-                        },
-                        {
-                          label: "Country",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Country",
-                          defaultValue: "Andrew"
-                        },
-                        {
-                          label: "Postal Code",
-                          type: "number",
-                          bsClass: "form-control",
-                          placeholder: "ZIP Code"
-                        }
-                      ]}
-                    />
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="name"  type="name" class="form-control" placeholder="Name" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+                        </div>
+                    </div>
 
-                    <Row>
-                      <Col md={12}>
-                        <FormGroup controlId="formControlsTextarea">
-                          <ControlLabel>About Me</ControlLabel>
-                          <FormControl
-                            rows="5"
-                            componentClass="textarea"
-                            bsClass="form-control"
-                            placeholder="Here can be your description"
-                            defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Button bsStyle="info" pullRight fill type="submit">
-                      Update Profile
-                    </Button>
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input name="email" type="email" class="form-control" placeholder="Email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Cargo Company</label>
+                            <input name="cargo_company" type="text" class="form-control" placeholder="Cargo Company" value={this.state.cargo_company} onChange={(event) => this.handleChange(event)}/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>User Type</label>
+                            <input name="user_type" type="text" class="form-control" placeholder="Email" value={this.state.user_type} onChange={(event) => this.handleChange(event)}/>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input name="contact" type="number" class="form-control" placeholder="Contact" value={this.state.contact} onChange={(event) => this.handleChange(event)}/>
+                        </div>
+                    </div> 
+
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="status" class="form-control" value={this.state.status} onChange={(event) => this.handleChange(event)}>
+                              <option value="approve">Approve</option>
+                              <option value="block">Block</option>
+                              <option value="unblock">UnBlock</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div className="clearfix" />
                   </form>
                 }
               />
             </Col>
-            {/* <Col md={4}>
-              <UserCard
-                bgImage="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-                avatar={avatar}
-                name="Mike Andrew"
-                userName="michael24"
-                description={
-                  <span>
-                    "Lamborghini Mercy
-                    <br />
-                    Your chick she so thirsty
-                    <br />
-                    I'm in that two seat Lambo"
-                  </span>
-                }
-                socials={
-                  <div>
-                    <Button simple>
-                      <i className="fa fa-facebook-square" />
-                    </Button>
-                    <Button simple>
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button simple>
-                      <i className="fa fa-google-plus-square" />
-                    </Button>
-                  </div>
-                }
-              />
-            </Col> */}
           </Row>
         </Grid>
       </div>
