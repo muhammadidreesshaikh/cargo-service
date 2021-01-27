@@ -56,7 +56,7 @@ const dashboardRoutes = [
   {
     display: true,
     path: "/user",
-    name: "User Profile",
+    name: `${user_type.toUpperCase() + user_type.slice(1)} Profile`,
     icon: "pe-7s-user",
     component: UserProfile,
     layout: "/admin"
@@ -96,7 +96,7 @@ const dashboardRoutes = [
 
   // all cargo
   {
-    display: user_type == 'cargo' || user_type == 'admin' ? true : false,
+    display: user_type == 'admin' ? true : false,
     path: "/all-cargo",
     name: "All Cargo",
     icon: "pe-7s-box2",
@@ -104,8 +104,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    display: user_type == 'cargo' || user_type == 'admin' || 
-    user_type == 'truck-staff' || user_type == 'collection-staff' || user_type == 'supervisor'  ? true : false,
+    display: user_type == 'cargo' || user_type == 'admin' || user_type == 'truck-staff' || user_type == 'collection-staff' || user_type == 'supervisor' || user_type == 'collection' ? true : false,
     path: "/all-pickup-request",
     name: "All Pickup Request",
     icon: "pe-7s-angle-right",
@@ -164,7 +163,7 @@ const dashboardRoutes = [
 
   // all center
   {
-    display: user_type == 'collection' || user_type == 'admin' ? true : false,
+    display: user_type == 'admin' ? true : false,
     path: "/all-center",
     name: "All Center",
     icon: "pe-7s-network",
